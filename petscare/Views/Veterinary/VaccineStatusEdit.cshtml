@@ -1,0 +1,25 @@
+﻿
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <select name="vaccinestatusID">
+
+        @foreach (var item in ViewBag.VaccineStatus)
+        {
+            <option value="@item.vaccinestatus_ID">Durum: @item.vaccinestatus</option>
+        }
+    </select>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+
+}
+

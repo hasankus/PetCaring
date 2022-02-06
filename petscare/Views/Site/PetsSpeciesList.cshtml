@@ -1,0 +1,36 @@
+﻿@model IEnumerable<petscare.Models.pets_species>
+
+<section id="content">
+    <div class="container_24">
+        <div>
+            <div class="a1">
+                <h2>PET CİNSLERİ</h2>
+            </div>
+            @foreach (var species in Model)
+            {
+                <div class="wrapper">
+                    <div class="grid_8">
+                        <div class="pad-right">
+
+                            <div class="wrapper">
+                                <img style="height:100px;width:100px;" src="~/Images/PetsImages/ked.jpg" alt="" class="img-indent-1">
+                                <div class="extra-wrap">
+
+                                    <p class="p2"> <strong class="str-1">@Html.ActionLink(species.pets_speciesname + " " + "Cinsleri", "PetsList", "Site", new { petspeciesId = species.pets_speciesID }, null)</strong> </p>
+
+
+                                    @*<p class="p0"> <strong> Vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. Cras mattis tempor eros nec. </strong> </p>*@
+                                </div>
+                            </div>
+
+                            @*<p class="p1"> Vivamus hendrerit mauris ut dui gravida ut viverra lectus tincidunt. Cras mattis tempor eros nec ique. Sed sed felis arcu, vel vehicula augue. Maecenas faucibus sagittis cursus. Fusce tincidunt, tellus. </p>*@
+                            <div class="alignright p3"> <a href="#" class="link">read more</a> </div>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</section>

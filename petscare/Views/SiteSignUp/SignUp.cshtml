@@ -1,0 +1,62 @@
+﻿@model petscare.Models.user
+
+@{
+    ViewBag.Title = "Pet Bakım | Üye Ol";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+<section style="text-align:center;" id="registration" class="container">
+    @using (Html.BeginForm())
+    {
+        <div style="text-align:center;padding-bottom:15px;">Üye Ol<span> |</span> <span><a class="btn btn-xs btn-primary" href="/SiteLogin/Login">Giriş Yap</a></span></div>
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <form class="center" role="form">
+            <fieldset class="registration-form">
+
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.user_firstname, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.user_lastname, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_telephone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon:(123)4567891", required = "required", type = "tel", pattern = "[0-9]{3}[0-9]{7}" } })
+                    @Html.ValidationMessageFor(model => model.user_telephone, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_age, new { htmlAttributes = new { @class = "form-control", placeholder = "Yaş", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.user_age, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_username, new { htmlAttributes = new { @class = "form-control", placeholder = "Kullanıcı Adı", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.user_username, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_firstpassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre", required = "required", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.user_firstpassword, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user_againpassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre Tekrar", required = "required", type = "password" } })
+                    @Html.ValidationMessageFor(model => model.user_againpassword, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <a class="text-danger" style="margin-left:30px;">@Session["errorpassword"]</a>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Kayıt Ol" class="btn btn-success btn-md btn-block" />
+                </div>
+            </fieldset>
+        </form>
+
+
+    }
+</section>
+
+
+

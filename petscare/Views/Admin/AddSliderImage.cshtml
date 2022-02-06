@@ -1,0 +1,29 @@
+﻿@model IEnumerable<petscare.Models.SliderImages>
+
+@{
+    ViewBag.Title = "Slider Resim Ekle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+
+
+}
+
+
+<form action="/Admin/AddSliderImage/" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="controls col-md-9">
+            <div class="fileupload fileupload-new" data-provides="imageupload">
+                <span class="btn btn-white btn-file">
+                    <span class=""> Resim Seç:</span>
+                    <input type="file" name="imageUpload" class="default" />
+                </span>
+                <span class="fileupload-preview" style="margin-left:5px;"></span>
+                <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+            </div>
+            <br />
+        </div>
+    </div>
+    <input type="submit" style="margin-left:347px;" class="btn" name="save" value="Kaydet" />
+
+</form>
+
+

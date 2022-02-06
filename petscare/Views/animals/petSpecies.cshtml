@@ -1,0 +1,40 @@
+﻿@model IEnumerable<petscare.Models.pets_species>
+
+@{
+    ViewBag.Title = "Pet Türleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Tür Adı:
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.pets_breed.pets_breedname)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_speciesname)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.pets_breed.pets_breedname)
+        </td>*@
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.pets_speciesID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.pets_speciesID }) |*@
+            @if (item.pets_speciesID != 0)
+            {
+            <a class="delete" href='@Url.Action("petSpeciesDelete", "animals",
+                            new{ petspeciesID=item.pets_speciesID})'>Sil</a>
+            }
+
+        </td>
+    </tr>
+}
+
+</table>

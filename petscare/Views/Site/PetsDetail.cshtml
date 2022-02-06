@@ -1,0 +1,158 @@
+﻿@model petscare.Models.pets
+
+@{
+    ViewBag.Title = "Pet Detay";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h3 style="text-align:center;">@Model.pets_breed.pets_breedname</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center gap">
+                    <div class="item-inner">
+                        @if (Model.pets_breed.pets_breedID.ToString() != null)
+                        {
+                            <p>
+                                <img style="width:200px;height:200px;" alt="" src="@Model.pets_breed.pets_breedpictureextension" />
+                            </p>
+                            <ul  style="list-style-type:none;" class="portfolio-item wordpress html">
+                                <li>
+                                    <div class="overlay">
+                                        <a class="preview btn btn-danger" href="@Model.pets_breed.pets_breedpictureextension" rel="prettyPhoto">Büyüt</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+
+                    </div>
+                    <div>
+                        <h3 class="media-heading">Açıklama</h3>
+                        <p>
+                            @foreach (var item in Model.pets_appearance)
+                            {
+                                @item.pets_breeddescription
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            @foreach (var item in Model.pets_appearance)
+            {
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (Model.pets_speciesID == 7)
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                            }
+                            else
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Karakter</h3>
+                            <p>@item.pets_characterdescription</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (Model.pets_speciesID == 7)
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                            }
+                            else
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Tüy Uzunlukları</h3>
+                            <p>@item.pets_hairfigure</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+            }
+        </div><!--/.row-->
+        <div class="gap"></div>
+        <div class="row">
+            @foreach (var item in Model.pets_appearance)
+            {
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (Model.pets_speciesID == 7)
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                            }
+                            else
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Bakım Talimatları</h3>
+                            <p>@item.pets_careinstruction</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (Model.pets_speciesID == 7)
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                            }
+                            else
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Vücut Boyutları</h3>
+                            <p>@item.pets_bodysize</p>
+                        </div>
+                    </div>
+                </div><!--/.col-md-4-->
+                <div class="col-md-4 col-sm-6">
+                    <div class="media">
+                        <div class="pull-left">
+                            @if (Model.pets_speciesID == 7)
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                            }
+                            else
+                            {
+                                <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                            }
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Köken</h3>
+                            <p>@item.pets_origin</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

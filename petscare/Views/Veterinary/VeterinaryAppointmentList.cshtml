@@ -1,0 +1,49 @@
+﻿@model IEnumerable<petscare.Models.appointments>
+
+@{
+    ViewBag.Title = "VeterinaryAppointmentList";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Randevular</h2>
+
+        <table class="table" style="">
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                @if (item.user_pets.user_petspicture.Count() != 0)
+                {
+                    <td><img alt="" src="@item.user_pets.user_petspicture.FirstOrDefault().pet_pictureextension" /></td>
+
+                }
+                else if (item.user_pets.user_petspicture.Count() == 0)
+                {
+                    <td><img src="~/Images/petsicon.png" /></td>
+                }
+                <td style="padding-right:20px;padding-top:30px;">
+                    Ad<br />
+                    @Html.DisplayFor(modelItem => item.pet_name)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Tarih<br />
+                    @Html.DisplayFor(modelItem => item.date)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Yaş<br />
+                    @Html.DisplayFor(modelItem => item.user_pets.user_petsfeatures.FirstOrDefault().pet_age)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    @if (item.pet_ID != 0)
+                    {
+                        @Html.ActionLink("Pet Bilgileri", "UserPetsInformations", "Veterinary", new { petID = item.pet_ID, }, new { style = "color:orange;" })
+                    }
+                </td>
+            </tr>
+            }
+        </table>
+    </div>
+</section>
+

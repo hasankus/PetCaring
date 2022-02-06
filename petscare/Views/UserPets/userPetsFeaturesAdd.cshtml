@@ -1,0 +1,84 @@
+﻿@model petscare.Models.user_petsfeatures
+
+@{
+    ViewBag.Title = "Dost Özellik Ekle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Özellik Ekle</h2>
+
+        @using (Html.BeginForm())
+        {
+
+            <div class="form-horizontal">
+              
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                <div class="form-group">
+                    
+                    <div class="col-md-10">
+                        Kilo
+                        @Html.EditorFor(model => model.pet_kilo, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_kilo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  
+                    <div class="col-md-10">
+                        Uzunluk
+                        @Html.EditorFor(model => model.pet_height, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_height, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.pet_gender, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <div class="checkbox">
+                                @Html.EditorFor(model => model.pet_gender)
+                                @Html.ValidationMessageFor(model => model.pet_gender, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                 
+                    <div class="col-md-10">
+                        Yaş
+                        @Html.EditorFor(model => model.pet_age, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+             
+                    <div class="col-md-10">
+                        Doğum Tarihi
+                        @Html.EditorFor(model => model.pet_birthday, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_birthday, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                
+                    <div class="col-md-10">
+                        Doğum Yeri
+                        @Html.EditorFor(model => model.pet_birthplace, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_birthplace, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ekle" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+   </div></section>

@@ -1,0 +1,104 @@
+﻿@model petscare.Models.user
+
+
+
+@{
+    ViewBag.Title = "Kullanıcı Düzenle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Bilgilerini Düzenle</h2>
+        @using (Html.BeginForm())
+        {
+
+
+            <div class="form-horizontal">
+                <hr />
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.user_ID)
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        Ad
+                        @Html.EditorFor(model => model.user_firstname, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_firstname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Soyad
+                        @Html.EditorFor(model => model.user_lastname, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_lastname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Kullanıcı Adı
+                        @Html.EditorFor(model => model.user_username, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_username, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Email
+                        @Html.EditorFor(model => model.user_email, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Telefon
+                        @Html.EditorFor(model => model.user_telephone, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_telephone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Yaş
+                        @Html.EditorFor(model => model.user_age, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_age, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Şifre
+                        @Html.EditorFor(model => model.user_firstpassword, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_firstpassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        Şifre Tekrar
+                        @Html.EditorFor(model => model.user_againpassword, new { htmlAttributes = new { @class = "form-control", @style = "width:300px;" } })
+                        @Html.ValidationMessageFor(model => model.user_againpassword, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <br />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Düzenle" class="button" />
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

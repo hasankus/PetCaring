@@ -1,0 +1,130 @@
+﻿@model petscare.Models.ownage_notice
+
+@{
+    ViewBag.Title = "İlan Ekle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+<div style="background-color:white;border-radius:20px;padding:15px;">
+
+
+    <h2>İlan Ekle</h2>
+
+
+    @using (Html.BeginForm())
+    {
+
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-10">
+                İlan Başlığı
+                @Html.EditorFor(model => model.notice_title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.notice_title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                İlan Açıklaması
+                @Html.EditorFor(model => model.notice_description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.notice_description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Pet Adı
+                @Html.EditorFor(model => model.notice_petname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.notice_petname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                Pet Yaşı
+                @Html.EditorFor(model => model.notice_petage, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.notice_petage, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            
+            <div class="col-md-10">
+                Pet Türü
+                <select name="pets_speciesID">
+
+                    @foreach (var species in ViewBag.petspecies)
+                    {
+                        <option value="@species.pets_speciesID">@species.pets_speciesname</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Pet Irkı
+                <select name="pets_breedID">
+                    @foreach (var breed in ViewBag.petsbreed)
+                    {
+                        <option value="@breed.pets_breedID">@breed.pets_breedname</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                İlan İl
+                <select name="provinces_ID">
+
+                    @foreach (var province in ViewBag.provinces)
+                    {
+                        <option value="@province.provinces_ID">@province.provinces_name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                Cinsiyet
+                <select name="petgender_ID">
+
+                    @foreach (var gender in ViewBag.petgender)
+                    {
+                        <option value="@gender.petgender_ID">@gender.petgender_name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            İlan veren
+            <div class="col-md-10">
+                <select name="user_ID">
+                        <option value="@Session["userID"]">@Session["Name"]</option>
+                </select>
+            </div>
+        </div>*@
+
+
+        @*<div class="form-group">
+            Resim Ekle
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required>
+            </div>
+
+        </div>*@
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="İlan Ver" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+</div>

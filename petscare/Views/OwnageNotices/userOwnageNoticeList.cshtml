@@ -1,0 +1,73 @@
+﻿@model List<petscare.Models.ownage_notice>
+
+@{
+    ViewBag.Title = "İlanlarım";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">İlanlarım</h2>
+        <table class="table" style="margin-left:50px;">
+
+
+            @foreach (var item in Model)
+            {
+
+
+
+                <tr style="">
+                    <td style="">
+                        @if (item.ownagenotices_pictures.Count != 0)
+                        {
+                            <img style="width:100px;height:100px;margin:5px;" alt="resim" src="@item.ownagenotices_pictures.FirstOrDefault().notice_picturesextension" />
+
+                        }
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        @Html.DisplayFor(modelItem => item.notice_title)
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.notice_description)
+                        </td>*@
+                    <td style="padding-right:20px;padding-top:30px;">
+                        @Html.DisplayFor(modelItem => item.notice_date)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        @Html.DisplayFor(modelItem => item.notice_petname)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        @Html.DisplayFor(modelItem => item.notice_petage)<span> Yaş</span>
+                    </td>
+                    @*<td>
+                            @Html.DisplayFor(modelItem => item.notice_petgender)
+                        </td>*@
+                    <td style="padding-right:20px;padding-top:30px;">
+                        @Html.DisplayFor(modelItem => item.notice_province)
+                    </td>
+                    @*<td style="padding-right:20px;padding-top:30px;">
+                            @Html.DisplayFor(modelItem => item.user.user_firstname)
+                        </td>*@
+                    <td style="padding-right:20px;padding-top:30px;">
+
+                        @Html.ActionLink("İlanı Görüntüle", "OwnageNoticeDetail", new { notice_ID = item.notice_ID }, new { style = "color:orange;" }) |
+
+                        @Html.ActionLink("Fotoğraf Ekle", "ownageNoticesPictureAdd", "OwnageNotices", new { noticeId = item.notice_ID, user_ID = item.user_ID, }, new { style = "color:orange;" }) |
+
+                        @if (item.notice_ID != 0)
+                        {
+
+                            @Html.ActionLink("Sil", "OwnageNoticeDelete", "OwnageNotices", new { notice_ID = item.notice_ID, user_ID = item.user_ID, }, new { style = "color:orange;" })
+
+                        } |
+
+                        @Html.ActionLink("Düzenle", "OwnageNoticeEdit", "OwnageNotices", new { notice_ID = item.notice_ID }, new { style = "color:orange;" })
+
+                    </td>
+
+                </tr>
+
+            }
+
+        </table>
+    </div></section>

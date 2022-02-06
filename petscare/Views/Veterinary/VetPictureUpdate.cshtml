@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "VetPictureUpdate";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<div style="background-color:white;border-radius:20px;padding:15px;" class="form-horizontal">
+    <h2>Yeni Fotoğraf Ekle</h2>
+
+    <div class="panel">
+        <hr />
+        <br />
+        <form action="/Veterinary/VetPictureUpdate/" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="uId" value="@Model" />
+            <div class="form-group">
+                <div class="controls col-md-9">
+                    <div class="fileupload fileupload-new" data-provides="fileupload">
+                        <span class="btn btn-white btn-file">
+                            <span class="fileupload-new">Resim Seç</span>
+                            <input type="file" name="fileUpload" class="default" />
+                        </span>
+                        <span class="fileupload-preview" style="margin-left:5px;"></span>
+                        <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none; margin-left:5px;"></a>
+                    </div>
+                    <br />
+                </div>
+            </div>
+            <input type="submit" class="button" name="save" value="Kaydet" />
+        </form>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+
+    @*<div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>*@
+</div>
+

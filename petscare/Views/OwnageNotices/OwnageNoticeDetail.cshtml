@@ -1,0 +1,376 @@
+﻿@model petscare.Models.ownage_notice
+
+@{
+    ViewBag.Title = "İlan Detay";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center gap">
+                    <div class="item-inner">
+                        <section id="main-slider" class="no-margin">
+                            <div style="height:410px;background-color:cornflowerblue;" class="carousel slide wet-asphalt">
+                                <ol class="carousel-indicators">
+                                    @for (int i = 0; i < 1; i++)
+                                    {
+                                        <li data-target="#main-slider" data-slide-to="1" class="active"></li>
+                                    }
+                                    @for (int i = 1; i <= Model.ownagenotices_pictures.Count(); i++)
+                                    {
+                                        <li data-target="#main-slider" data-slide-to="i"></li>
+                                    }
+
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div style="padding-left:270px;" class="item active">
+                                        <img width="615" height="350" src="@Model.ownagenotices_pictures.FirstOrDefault().notice_picturesextension" />
+                                    </div>
+
+                                    @foreach (var image in ViewBag.pictures)
+                                    {
+                                        <div style="padding-left:270px;" class="item">
+                                            <img width="615" height="350" src="@image.notice_picturesextension" />
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                            <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+                                <i><img style="width:25px;height:25px;" src="~/Content/Site/images/icons/left.png" /></i>
+                            </a>
+                            <a class="next hidden-xs" href="#main-slider" data-slide="next">
+                                <i><img style="width:25px;height:25px;" src="~/Content/Site/images/icons/right-arrow.png" /></i>
+                            </a>
+                        </section>
+                        <h3>@Model.notice_title</h3>
+
+
+                        @*@if (Model.ownagenotices_pictures != null)
+        {
+            foreach (var item in Model.ownagenotices_pictures)
+            {
+                <img style="width:300px;height:200px;" alt="" src="@Model.ownagenotices_pictures.FirstOrDefault(x=>x.notice_pictureID == item.notice_pictureID).notice_picturesextension" />
+
+            }
+        }*@
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+
+                    </div>
+                    <div>
+                        <h3 class="media-heading">Açıklama</h3>
+                        <p>
+                            @Model.notice_description
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Ad</h3>
+                        <p>@Model.notice_petname</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Yaş</h3>
+                        <p>@Model.notice_petage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Cinsiyet</h3>
+                        <p>@Model.notice_petgender</p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">Tür</h3>
+                        <p>@Model.pets_breed.pets_breedname</p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">İlan Tarihi</h3>
+                        <p>@Model.notice_date</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">İlan Sahibi</h3>
+                        <p>@Model.user.user_firstname @Model.user.user_lastname</p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">İlan Sahibi Telefon</h3>
+                        <p>@Model.user.user_telephone</p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        @if (Model.pets_species.pets_speciesID == 7)
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kopek.png" />
+                        }
+                        else
+                        {
+                            <img class="icon-windows icon-md" style="width:80px;height:80px;padding:10px;" src="~/Images/kedi2.png" />
+                        }
+                    </div>
+                    <div class="media-body">
+                        <h3 class="media-heading">İlan Yeri</h3>
+                        <p>@Model.notice_province</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<section id="content">
+
+    <div style="background-color:ghostwhite;border-radius:20px;">
+        <div class="indent-bot">
+            <div style="padding:25px;">
+                <h2 style="margin-left:15px;"><span>@Model.notice_title</span></h2>
+                <div class="wrapper">
+                    <hr />
+                    <br />
+                    <figure class="img-indent">
+                        @if (Model.ownagenotices_pictures != null)
+                        {
+                            <p>
+                                <img style="width:200px;height:200px;" alt="" src="@Model.ownagenotices_pictures.FirstOrDefault().notice_picturesextension" />
+                            </p>
+                        }
+
+                    </figure>
+
+                    <div class="quote extra-wrap">
+                     
+                            <strong>@Model.notice_description</strong>
+                        
+                    </div>
+                  
+
+                        <div class="wrapper">
+                            <div class="grid_7 suffix_1">
+                                <div class="wrapper ">
+                                    <span class="dropcap">
+                                        <img style="width:40px;height:40px;" src="~/Images/iconcatdog.png" />
+                                    </span>
+                                    <div class="extra-wrap">
+                                        <dl class="def-list-1">
+                                            <dt> <a href="#">Ad</a> </dt>
+                                            <dd class="extra">@Model.notice_petname</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                                <div class="wrapper ">
+                                    <span class="dropcap">
+                                        <img style="width:40px;height:40px;" src="~/Images/iconcatdog.png" />
+                                    </span>
+                                    <div class="extra-wrap">
+                                        <dl class="def-list-1">
+                                            <dt> <a href="#">Yaş</a> </dt>
+                                            <dd>@Model.notice_petage</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                                
+                                    <div class="wrapper">
+                                        <span class="dropcap">
+                                            <img style="width:40px;height:40px;" src="~/Images/iconcatdog.png" />
+                                        </span>
+                                        <div class="extra-wrap">
+                                            <dl class="def-list-1">
+                                                <dt> <a href="#">Cinsiyet</a> </dt>
+                                                <dd>@Model.notice_petgender</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                               
+                                
+                                    <div class="wrapper">
+                                        <span class="dropcap">
+                                            <img style="width:40px;height:40px;" src="~/Images/iconcatdog.png" />
+                                        </span>
+                                        <div class="extra-wrap">
+                                            <dl class="def-list-1">
+                                                <dt> <a href="#">Irk</a> </dt>
+                                                <dd>@Model.pets_breed.pets_breedname</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                            
+                            
+                                <div class="wrapper">
+                                    <span class="dropcap">
+
+                                    </span>
+                                    <div class="extra-wrap">
+                                        <dl class="def-list-1">
+                                            <dt> <a href="#">İlan İli</a> </dt>
+                                            <dd>@Model.notice_province</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+
+                               
+                                    <div class="wrapper">
+                                        <span class="dropcap">
+                                        </span>
+                                        <div class="extra-wrap">
+                                            <dl class="def-list-1">
+                                                <dt> <a href="#">İlan Sahibi</a> </dt>
+                                                <dd>@Model.user.user_firstname @Model.user.user_lastname</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                               
+
+                                
+                                    <div class="wrapper">
+                                        <span class="dropcap">
+                                        </span>
+                                        <div class="extra-wrap">
+                                            <dl class="def-list-1">
+                                                <dt> <a href="#">İlan Sahibi Telefon</a> </dt>
+                                                <dd>@Model.user.user_telephone</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                               
+                            
+                                    <div class="wrapper">
+                                        <span class="dropcap">
+                                        </span>
+                                        <div class="extra-wrap">
+                                            <dl class="def-list-1">
+                                                <dt> <a href="#">İlan Tarihi</a> </dt>
+                                                <dd>@Model.notice_date</dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                               
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>*@
+

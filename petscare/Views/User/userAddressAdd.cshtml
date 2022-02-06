@@ -1,0 +1,60 @@
+﻿@model petscare.Models.user_adress
+@{
+    ViewBag.Title = "Adres Ekle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<div style="background-color:white;padding:20px;border-radius:20px;">
+    <h2>Adres Bilgileri</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+
+        <div class="form-horizontal">
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group" style="width:300px;">
+                <div class="col-md-10">
+                    Ülke
+                    @Html.EditorFor(model => model.user_country, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_country, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="width:300px;">
+                
+                <div class="col-md-10">
+                    İl
+                    @Html.EditorFor(model => model.user_province, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_province, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="width:300px;">
+                
+                <div class="col-md-10">
+                    Adres
+                    @Html.EditorFor(model => model.user_adress1, new { htmlAttributes = new { @class = "form-control"} })
+                    @Html.ValidationMessageFor(model => model.user_adress1, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="width:300px;">
+                
+                <div class="col-md-10">
+                    Posta Kodu
+                    @Html.EditorFor(model => model.user_postcode, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user_postcode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group" style="width:300px;">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Ekle" class="button" />
+                </div>
+            </div>
+        </div>
+    }
+</div>

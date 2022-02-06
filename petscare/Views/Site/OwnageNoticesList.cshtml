@@ -1,0 +1,88 @@
+﻿@model List<petscare.Models.ownage_notice>
+
+@{
+    ViewBag.Title = "Yuva Arayanlar";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Bir çok dostumuz seni bekliyor </h3>
+            <a href="/OwnageNotices/ownageNoticesFilterLikeGender">Sende hemen ilanlara göz at ve bir dost edin.</a>
+            <p></p>
+            <div class="btn-group">
+                <a class="btn btn-danger" href="#scroller" data-slide="prev"><i><img style="width:25px;height:15px;" src="~/Content/Site/images/icons/left.png" /> </i></a>
+                <a class="btn btn-danger" href="#scroller" data-slide="next"><i><img style="width:25px;height:15px;" src="~/Content/Site/images/icons/right-arrow.png" /> </i></a>
+            </div>
+            <p class="gap"></p>
+        </div>
+        <div class="col-md-9">
+            <div id="scroller" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <div class="row">
+                                @for (int i = 0; i < 3; i++)
+                                {
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                @if (Model[i].ownagenotices_pictures.Count != 0)
+                                                {
+                                                    <img style="" alt="" src="@Model[i].ownagenotices_pictures.FirstOrDefault().notice_picturesextension" />
+                                                }
+                                                else
+                                                {
+                                                    <img style="" alt="resim" src="" />
+
+                                                }
+                                                <h5 style="text-align:center;">
+                                                    @Html.DisplayFor(modelItem => Model[i].notice_petname) | @Html.DisplayFor(modelItem => Model[i].pets_breed.pets_breedname)
+
+                                                </h5>
+                                                <div class="overlay" style="padding-top:70px;">
+                                                    @Html.ActionLink("Görüntüle", "OwnageNoticeDetail", "OwnageNotices", new { notice_ID = Model[i].notice_ID }, new { style = "color:orange;" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                        </div>
+                    </div>
+
+                    <div class="item">
+                        <div class="row">
+                           
+                                @for (int i = 3; i < 6; i++)
+                                {
+                                    <div class="col-xs-4">
+                                        <div class="portfolio-item">
+                                            <div class="item-inner">
+                                                @if (Model[i].ownagenotices_pictures.Count != 0)
+                                                {
+                                                    <img style="" alt="" src="@Model[i].ownagenotices_pictures.FirstOrDefault().notice_picturesextension" />
+                                                }
+                                                else
+                                                {
+                                                    <img style="" alt="resim" src="" />
+
+                                                }
+                                                <h5 style="text-align:center;">
+                                                    @Html.DisplayFor(modelItem => Model[i].notice_petname) | @Html.DisplayFor(modelItem => Model[i].pets_breed.pets_breedname)
+
+                                                </h5>
+                                                <div class="overlay" style="padding-top:70px;">
+                                                    @Html.ActionLink("Görüntüle", "OwnageNoticeDetail", "OwnageNotices", new { notice_ID = Model[i].notice_ID }, new { style = "color:orange;" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

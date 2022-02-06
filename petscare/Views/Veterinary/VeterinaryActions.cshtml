@@ -1,0 +1,30 @@
+﻿@model IEnumerable<petscare.Models.vets>
+
+@{
+    ViewBag.Title = "VeterinaryActions";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+                        @foreach (var item in Model)
+                        {
+                            <div class="col-sm-6">
+                                <h1>@Html.DisplayFor(modelItem => item.vets_firstname) @Html.DisplayFor(modelItem => item.vets_lastname)</h1>
+                                <p>İşlemlerinizi Gerçekleştirin.</p>
+                            </div>
+                            <div class="col-sm-6">
+                                <ul class="breadcrumb pull-right">
+                                    <li><a href="~/Veterinary/VeterinaryAccount?vetId=@item.vets_ID">Hesabım</a></li>
+                                    <li class="active">@Html.ActionLink("Aşı Takvimi", "VeterinaryVaccineDaysList", "Veterinary", new { vetId = item.vets_ID }, new { @style = "text-decoration:none;" })</li>
+                                    <li class="active">@Html.ActionLink("Randevular", "VeterinaryAppointmentList", "Veterinary", new { vetId = item.vets_ID, petID=item.user_pets.FirstOrDefault().pet_ID }, new { @style = "text-decoration:none;" })
+            <li class="active">@Html.ActionLink("İlgili Petler", "VeterinaryPetsList", "Veterinary", new { vetId = item.vets_ID }, new { @style = "text-decoration:none;" })
+                                    </li>
+                                </ul>
+                            </div>
+                        }
+                    </div>
+    </div>
+</section>
+

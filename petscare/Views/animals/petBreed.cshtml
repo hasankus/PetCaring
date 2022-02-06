@@ -1,0 +1,53 @@
+﻿@model IEnumerable<petscare.Models.pets_breed>
+
+@{
+    ViewBag.Title = "Pet Cinsleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Cins Adı:
+        </th>
+        <th>
+            Tür Adı:
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.pets_breedpictures.pets_breedpictureextension)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_breedname)
+        </td>
+        <td>
+            @if (item.pets_speciesID == 7)
+            {
+                <label>Köpek</label>
+            }
+            else
+            {
+                <label>Kedi</label>
+            }
+
+        </td>
+            
+               
+        @*<td>
+            @Html.DisplayFor(modelItem => item.pets_breedpictures.pets_breedpictureextension)
+        </td>*@
+        <td>
+            @if (item.pets_breedID != 0)
+            {
+                <a class="delete" href='@Url.Action("petBreedDelete", "animals",
+                            new{ petsbreedID=item.pets_breedID})'>Sil</a>
+            }
+        </td>
+    </tr>
+}
+
+</table>

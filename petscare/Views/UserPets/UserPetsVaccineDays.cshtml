@@ -1,0 +1,55 @@
+﻿@model IEnumerable<petscare.Models.vaccine_calendar>
+
+@{
+    ViewBag.Title = "UserPetsVaccineDays";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Aşı Takvimi</h2>
+        <table class="table">
+            <tr>
+                <th>
+                   Aşı Günü
+                </th>
+                <th>
+                    Aşı Adı
+                </th>
+                <th>
+                    Dost Adı
+                </th>
+                <th>
+                    Veteriner
+                </th>
+                <th>
+                    Aşı Durumu
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vaccine_days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vaccine_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_pets.pet_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vets.vets_firstname) @Html.DisplayFor(modelItem => item.vets.vets_lastname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vaccine_status)
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div></section>

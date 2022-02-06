@@ -1,0 +1,64 @@
+﻿@model petscare.Models.ownage_notice
+
+@{
+    ViewBag.Title = "İlan Düzenle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">İlan Düzenle</h2>
+
+        @using (Html.BeginForm())
+        {
+
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.notice_ID)
+            @Html.HiddenFor(model => model.user_ID)
+            @Html.HiddenFor(model => model.notice_date)
+            @Html.HiddenFor(model => model.notice_pictureID)
+            @Html.HiddenFor(model => model.notice_petgender)
+            @Html.HiddenFor(model => model.notice_petgenderID)
+            @Html.HiddenFor(model => model.notice_petspeciesID)
+            @Html.HiddenFor(model => model.notice_petbreedID)
+            @Html.HiddenFor(model => model.notice_province)
+
+            <div class="form-group">
+                <div class="col-md-10">
+                    İlan Başlık
+                    @Html.EditorFor(model => model.notice_title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.notice_title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-10">
+                    Açıklama
+                    @Html.EditorFor(model => model.notice_description, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.notice_description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    Ad
+                    @Html.EditorFor(model => model.notice_petname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.notice_petname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    Yaş
+                    @Html.EditorFor(model => model.notice_petage, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.notice_petage, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <br />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Düzenle" class="btn btn-default" />
+                </div>
+            </div>
+        }
+    </div>
+    </section>

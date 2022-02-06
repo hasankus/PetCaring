@@ -1,0 +1,60 @@
+﻿@model IEnumerable<petscare.Models.ownage_notice>
+
+@{
+    ViewBag.Title = "Sahiplenme İlanları";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            İlan Başlık
+        </th>
+        <th>
+            İlan Açıklama
+        </th>
+        <th>
+            İlan Tarihi
+        </th>
+        <th>
+            Pet Adı
+        </th>
+        <th>
+            İlan İl
+        </th>
+        <th>
+            Pet Tür
+        </th>
+        <th>
+           Pet Sahibi
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.notice_title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notice_description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notice_date)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notice_petname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.notice_province)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_species.pets_speciesname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user.user_firstname) @Html.DisplayFor(modelItem => item.user.user_lastname)
+        </td>
+    </tr>
+}
+
+</table>

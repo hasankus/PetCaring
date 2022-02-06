@@ -1,0 +1,7 @@
+﻿@model IEnumerable<petscare.Models.pets_species>
+                @foreach (var species in Model)
+                {
+                    <li>@Html.ActionLink(species.pets_speciesname+"ler", "PetsList", "Site", new { petspeciesId = species.pets_speciesID },new {style="color:white;text-decoration:none;" })</li>
+                }
+              
+

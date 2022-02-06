@@ -1,0 +1,1734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="petscareModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="admin_firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="admin_lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="admin_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="admin_telephone" Type="char" MaxLength="11" />
+          <Property Name="admin_age" Type="int" />
+          <Property Name="admin_gender" Type="bit" />
+          <Property Name="admin_firstpassword" Type="nvarchar" MaxLength="15" />
+          <Property Name="admin_againpassword" Type="nvarchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="appointments">
+          <Key>
+            <PropertyRef Name="appointments_ID" />
+          </Key>
+          <Property Name="appointments_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vets_ID" Type="int" />
+          <Property Name="pet_ID" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="pet_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_ID" />
+          </Key>
+          <Property Name="contact_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="contact_userName" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_userSurname" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_message" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ownage_notice">
+          <Key>
+            <PropertyRef Name="notice_ID" />
+          </Key>
+          <Property Name="notice_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notice_title" Type="nvarchar" MaxLength="50" />
+          <Property Name="notice_description" Type="nvarchar(max)" />
+          <Property Name="user_ID" Type="int" />
+          <Property Name="notice_picturesextension" Type="nvarchar" MaxLength="500" />
+          <Property Name="notice_date" Type="datetime" />
+          <Property Name="notice_petname" Type="nvarchar" MaxLength="50" />
+          <Property Name="notice_petage" Type="int" />
+          <Property Name="notice_petgender" Type="nvarchar" MaxLength="50" />
+          <Property Name="notice_province" Type="nvarchar" MaxLength="50" />
+          <Property Name="notice_pictureID" Type="int" />
+          <Property Name="notice_petgenderID" Type="int" />
+          <Property Name="notice_petspeciesID" Type="int" />
+          <Property Name="notice_petbreedID" Type="int" />
+          <Property Name="notice_petbreedname" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ownagenotices_pictures">
+          <Key>
+            <PropertyRef Name="notice_pictureID" />
+          </Key>
+          <Property Name="notice_pictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="notice_picturesextension" Type="nvarchar(max)" />
+          <Property Name="notice_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="pet_gender">
+          <Key>
+            <PropertyRef Name="petgender_ID" />
+          </Key>
+          <Property Name="petgender_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="petgender_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="pets">
+          <Key>
+            <PropertyRef Name="pets_ID" />
+          </Key>
+          <Property Name="pets_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pets_speciesID" Type="int" />
+          <Property Name="pets_breedID" Type="int" />
+        </EntityType>
+        <EntityType Name="pets_appearance">
+          <Key>
+            <PropertyRef Name="pets_appearanceID" />
+          </Key>
+          <Property Name="pets_appearanceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pets_breedID" Type="int" />
+          <Property Name="pets_colors" Type="nvarchar(max)" />
+          <Property Name="pets_breeddescription" Type="nvarchar(max)" />
+          <Property Name="pets_bodysize" Type="nvarchar(max)" />
+          <Property Name="pets_origin" Type="nvarchar(max)" />
+          <Property Name="pets_characterdescription" Type="nvarchar(max)" />
+          <Property Name="pets_careinstruction" Type="nvarchar(max)" />
+          <Property Name="pets_hairfigure" Type="nvarchar(max)" />
+          <Property Name="pets_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="pets_breed">
+          <Key>
+            <PropertyRef Name="pets_breedID" />
+          </Key>
+          <Property Name="pets_breedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pets_breedname" Type="nvarchar" MaxLength="50" />
+          <Property Name="pets_breedpictureID" Type="int" />
+          <Property Name="pets_speciesID" Type="int" />
+          <Property Name="pets_breedpictureextension" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="pets_breedpictures">
+          <Key>
+            <PropertyRef Name="pets_breedpictureID" />
+          </Key>
+          <Property Name="pets_breedpictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pets_breedpictureextension" Type="nvarchar" MaxLength="500" />
+          <Property Name="pets_defaultextension" Type="bit" />
+        </EntityType>
+        <EntityType Name="pets_species">
+          <Key>
+            <PropertyRef Name="pets_speciesID" />
+          </Key>
+          <Property Name="pets_speciesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pets_speciesname" Type="nvarchar" MaxLength="50" />
+          <Property Name="pets_breedID" Type="int" />
+        </EntityType>
+        <EntityType Name="provinces">
+          <Key>
+            <PropertyRef Name="provinces_ID" />
+          </Key>
+          <Property Name="provinces_ID" Type="int" Nullable="false" />
+          <Property Name="provinces_name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SliderImages">
+          <Key>
+            <PropertyRef Name="SliderImages_ID" />
+          </Key>
+          <Property Name="SliderImages_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SliderImages_extension" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_telephone" Type="char" MaxLength="11" />
+          <Property Name="user_age" Type="int" />
+          <Property Name="user_gender" Type="bit" />
+          <Property Name="user_username" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_firstpassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_againpassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_pictureextension" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="user_adress">
+          <Key>
+            <PropertyRef Name="user_adressID" />
+          </Key>
+          <Property Name="user_ID" Type="int" />
+          <Property Name="user_adressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_country" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_province" Type="nvarchar" MaxLength="50" />
+          <Property Name="user_adress" Type="nvarchar" MaxLength="500" />
+          <Property Name="user_postcode" Type="int" />
+        </EntityType>
+        <EntityType Name="user_pets">
+          <Key>
+            <PropertyRef Name="pet_ID" />
+          </Key>
+          <Property Name="user_ID" Type="int" Nullable="false" />
+          <Property Name="pet_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_species" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_breed" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_petsfeaturesID" Type="int" />
+          <Property Name="pet_pictureID" Type="int" />
+          <Property Name="vets_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="user_petsfeatures">
+          <Key>
+            <PropertyRef Name="pet_featuresID" />
+          </Key>
+          <Property Name="pet_ID" Type="int" />
+          <Property Name="pet_featuresID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_colors" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_eyescolors" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_kilo" Type="nvarchar" MaxLength="50" />
+          <Property Name="pet_height" Type="int" />
+          <Property Name="pet_gender" Type="bit" />
+          <Property Name="pet_age" Type="int" />
+          <Property Name="pet_birthday" Type="date" />
+          <Property Name="pet_birthplace" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="user_petspicture">
+          <Key>
+            <PropertyRef Name="pet_pictureID" />
+          </Key>
+          <Property Name="pet_pictureID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_ID" Type="int" />
+          <Property Name="pet_pictureextension" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="user_pictures">
+          <Key>
+            <PropertyRef Name="user_picturesID" />
+          </Key>
+          <Property Name="user_picturesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_pictureextension" Type="nvarchar" MaxLength="500" />
+          <Property Name="user_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="vaccine_calendar">
+          <Key>
+            <PropertyRef Name="vaccinecalendar_ID" />
+          </Key>
+          <Property Name="vaccinecalendar_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pet_ID" Type="int" />
+          <Property Name="vets_ID" Type="int" />
+          <Property Name="vaccine_days" Type="date" />
+          <Property Name="vaccine_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="vaccine_status" Type="nvarchar" MaxLength="50" />
+          <Property Name="vaccinestatus_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="vaccine_status">
+          <Key>
+            <PropertyRef Name="vaccinestatus_ID" />
+          </Key>
+          <Property Name="vaccinestatus_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vaccinestatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="vets">
+          <Key>
+            <PropertyRef Name="vets_ID" />
+          </Key>
+          <Property Name="vets_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vets_firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_email" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_telephone" Type="char" MaxLength="11" />
+          <Property Name="vets_gender" Type="bit" />
+          <Property Name="vets_age" Type="int" />
+          <Property Name="vets_firstpassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_passwordagain" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_username" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="vets_adress">
+          <Key>
+            <PropertyRef Name="vets_adressID" />
+          </Key>
+          <Property Name="vets_adressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vets_country" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_province" Type="nvarchar" MaxLength="50" />
+          <Property Name="vets_adress" Type="nvarchar" MaxLength="150" />
+          <Property Name="vets_postcode" Type="char" MaxLength="5" />
+          <Property Name="vets_ID" Type="int" />
+        </EntityType>
+        <EntityType Name="vets_pictures">
+          <Key>
+            <PropertyRef Name="vets_picturesID" />
+          </Key>
+          <Property Name="vets_picturesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="vets_picturesextension" Type="nvarchar" MaxLength="500" />
+          <Property Name="vets_ID" Type="int" />
+        </EntityType>
+        <Association Name="FK_appointments_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="appointments">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointments_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="appointments">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pet_gender">
+          <End Role="pet_gender" Type="Self.pet_gender" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pet_gender">
+              <PropertyRef Name="petgender_ID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petgenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petbreedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pets_species">
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_species">
+              <PropertyRef Name="pets_speciesID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petspeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownagenotices_pictures_ownage_notice">
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="0..1" />
+          <End Role="ownagenotices_pictures" Type="Self.ownagenotices_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ownage_notice">
+              <PropertyRef Name="notice_ID" />
+            </Principal>
+            <Dependent Role="ownagenotices_pictures">
+              <PropertyRef Name="notice_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_appearance_pets">
+          <End Role="pets" Type="Self.pets" Multiplicity="0..1" />
+          <End Role="pets_appearance" Type="Self.pets_appearance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets">
+              <PropertyRef Name="pets_ID" />
+            </Principal>
+            <Dependent Role="pets_appearance">
+              <PropertyRef Name="pets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_breed_pets_breedpictures">
+          <End Role="pets_breedpictures" Type="Self.pets_breedpictures" Multiplicity="0..1" />
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breedpictures">
+              <PropertyRef Name="pets_breedpictureID" />
+            </Principal>
+            <Dependent Role="pets_breed">
+              <PropertyRef Name="pets_breedpictureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_features_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets_appearance" Type="Self.pets_appearance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets_appearance">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets" Type="Self.pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_pets_species">
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="0..1" />
+          <End Role="pets" Type="Self.pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_species">
+              <PropertyRef Name="pets_speciesID" />
+            </Principal>
+            <Dependent Role="pets">
+              <PropertyRef Name="pets_speciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_species_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets_species">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_adress_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user_adress" Type="Self.user_adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_adress">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pets_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_pets">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pets_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="user_pets">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_petsfeatures_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="user_petsfeatures" Type="Self.user_petsfeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="user_petsfeatures">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_petspicture_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="user_petspicture" Type="Self.user_petspicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="user_petspicture">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pictures_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user_pictures" Type="Self.user_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_pictures">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaccine_calendar_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="vaccine_calendar" Type="Self.vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaccine_calendar_vaccine_status">
+          <End Role="vaccine_status" Type="Self.vaccine_status" Multiplicity="0..1" />
+          <End Role="vaccine_calendar" Type="Self.vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vaccine_status">
+              <PropertyRef Name="vaccinestatus_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="vaccinestatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaccine_calendar_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vaccine_calendar" Type="Self.vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vets_adress_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vets_adress" Type="Self.vets_adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vets_adress">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vets_pictures_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vets_pictures" Type="Self.vets_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vets_pictures">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="petscareModelStoreContainer">
+          <EntitySet Name="admin" EntityType="Self.admin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="appointments" EntityType="Self.appointments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ownage_notice" EntityType="Self.ownage_notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ownagenotices_pictures" EntityType="Self.ownagenotices_pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pet_gender" EntityType="Self.pet_gender" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pets" EntityType="Self.pets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pets_appearance" EntityType="Self.pets_appearance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pets_breed" EntityType="Self.pets_breed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pets_breedpictures" EntityType="Self.pets_breedpictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pets_species" EntityType="Self.pets_species" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="provinces" EntityType="Self.provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderImages" EntityType="Self.SliderImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user" EntityType="Self.user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_adress" EntityType="Self.user_adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_pets" EntityType="Self.user_pets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_petsfeatures" EntityType="Self.user_petsfeatures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_petspicture" EntityType="Self.user_petspicture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_pictures" EntityType="Self.user_pictures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vaccine_calendar" EntityType="Self.vaccine_calendar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vaccine_status" EntityType="Self.vaccine_status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vets" EntityType="Self.vets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vets_adress" EntityType="Self.vets_adress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vets_pictures" EntityType="Self.vets_pictures" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_appointments_user_pets" Association="Self.FK_appointments_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="appointments" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointments_vets" Association="Self.FK_appointments_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="appointments" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pet_gender" Association="Self.FK_ownage_notice_pet_gender">
+            <End Role="pet_gender" EntitySet="pet_gender" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pets_breed" Association="Self.FK_ownage_notice_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pets_species" Association="Self.FK_ownage_notice_pets_species">
+            <End Role="pets_species" EntitySet="pets_species" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_user" Association="Self.FK_ownage_notice_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownagenotices_pictures_ownage_notice" Association="Self.FK_ownagenotices_pictures_ownage_notice">
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+            <End Role="ownagenotices_pictures" EntitySet="ownagenotices_pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_appearance_pets" Association="Self.FK_pets_appearance_pets">
+            <End Role="pets" EntitySet="pets" />
+            <End Role="pets_appearance" EntitySet="pets_appearance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_breed_pets_breedpictures" Association="Self.FK_pets_breed_pets_breedpictures">
+            <End Role="pets_breedpictures" EntitySet="pets_breedpictures" />
+            <End Role="pets_breed" EntitySet="pets_breed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_features_pets_breed" Association="Self.FK_pets_features_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets_appearance" EntitySet="pets_appearance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_pets_breed" Association="Self.FK_pets_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets" EntitySet="pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_pets_species" Association="Self.FK_pets_pets_species">
+            <End Role="pets_species" EntitySet="pets_species" />
+            <End Role="pets" EntitySet="pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_species_pets_breed" Association="Self.FK_pets_species_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets_species" EntitySet="pets_species" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_adress_user" Association="Self.FK_user_adress_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_adress" EntitySet="user_adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pets_user" Association="Self.FK_user_pets_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_pets" EntitySet="user_pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pets_vets" Association="Self.FK_user_pets_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="user_pets" EntitySet="user_pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_petsfeatures_user_pets" Association="Self.FK_user_petsfeatures_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="user_petsfeatures" EntitySet="user_petsfeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_petspicture_user_pets" Association="Self.FK_user_petspicture_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="user_petspicture" EntitySet="user_petspicture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pictures_user" Association="Self.FK_user_pictures_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_pictures" EntitySet="user_pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaccine_calendar_user_pets" Association="Self.FK_vaccine_calendar_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaccine_calendar_vaccine_status" Association="Self.FK_vaccine_calendar_vaccine_status">
+            <End Role="vaccine_status" EntitySet="vaccine_status" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaccine_calendar_vets" Association="Self.FK_vaccine_calendar_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vets_adress_vets" Association="Self.FK_vets_adress_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vets_adress" EntitySet="vets_adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vets_pictures_vets" Association="Self.FK_vets_pictures_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vets_pictures" EntitySet="vets_pictures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="petscareModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="admin">
+          <Key>
+            <PropertyRef Name="admin_ID" />
+          </Key>
+          <Property Name="admin_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="admin_firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admin_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admin_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="admin_telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="admin_age" Type="Int32" />
+          <Property Name="admin_gender" Type="Boolean" />
+          <Property Name="admin_firstpassword" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="admin_againpassword" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="appointments">
+          <Key>
+            <PropertyRef Name="appointments_ID" />
+          </Key>
+          <Property Name="appointments_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vets_ID" Type="Int32" />
+          <Property Name="pet_ID" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="pet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_appointments_user_pets" FromRole="appointments" ToRole="user_pets" />
+          <NavigationProperty Name="vets" Relationship="Self.FK_appointments_vets" FromRole="appointments" ToRole="vets" />
+        </EntityType>
+        <EntityType Name="ownage_notice">
+          <Key>
+            <PropertyRef Name="notice_ID" />
+          </Key>
+          <Property Name="notice_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notice_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notice_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="notice_picturesextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="notice_date" Type="DateTime" Precision="3" />
+          <Property Name="notice_petname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notice_petage" Type="Int32" />
+          <Property Name="notice_petgender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notice_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="notice_pictureID" Type="Int32" />
+          <Property Name="notice_petgenderID" Type="Int32" />
+          <Property Name="notice_petspeciesID" Type="Int32" />
+          <Property Name="notice_petbreedID" Type="Int32" />
+          <Property Name="notice_petbreedname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pet_gender" Relationship="Self.FK_ownage_notice_pet_gender" FromRole="ownage_notice" ToRole="pet_gender" />
+          <NavigationProperty Name="pets_breed" Relationship="Self.FK_ownage_notice_pets_breed" FromRole="ownage_notice" ToRole="pets_breed" />
+          <NavigationProperty Name="pets_species" Relationship="Self.FK_ownage_notice_pets_species" FromRole="ownage_notice" ToRole="pets_species" />
+          <NavigationProperty Name="user" Relationship="Self.FK_ownage_notice_user" FromRole="ownage_notice" ToRole="user" />
+          <NavigationProperty Name="ownagenotices_pictures" Relationship="Self.FK_ownagenotices_pictures_ownage_notice" FromRole="ownage_notice" ToRole="ownagenotices_pictures" />
+        </EntityType>
+        <EntityType Name="ownagenotices_pictures">
+          <Key>
+            <PropertyRef Name="notice_pictureID" />
+          </Key>
+          <Property Name="notice_pictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="notice_picturesextension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="notice_ID" Type="Int32" />
+          <NavigationProperty Name="ownage_notice" Relationship="Self.FK_ownagenotices_pictures_ownage_notice" FromRole="ownagenotices_pictures" ToRole="ownage_notice" />
+        </EntityType>
+        <EntityType Name="pet_gender">
+          <Key>
+            <PropertyRef Name="petgender_ID" />
+          </Key>
+          <Property Name="petgender_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="petgender_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ownage_notice" Relationship="Self.FK_ownage_notice_pet_gender" FromRole="pet_gender" ToRole="ownage_notice" />
+        </EntityType>
+        <EntityType Name="pets">
+          <Key>
+            <PropertyRef Name="pets_ID" />
+          </Key>
+          <Property Name="pets_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pets_speciesID" Type="Int32" />
+          <Property Name="pets_breedID" Type="Int32" />
+          <NavigationProperty Name="pets_appearance" Relationship="Self.FK_pets_appearance_pets" FromRole="pets" ToRole="pets_appearance" />
+          <NavigationProperty Name="pets_breed" Relationship="Self.FK_pets_pets_breed" FromRole="pets" ToRole="pets_breed" />
+          <NavigationProperty Name="pets_species" Relationship="Self.FK_pets_pets_species" FromRole="pets" ToRole="pets_species" />
+        </EntityType>
+        <EntityType Name="pets_appearance">
+          <Key>
+            <PropertyRef Name="pets_appearanceID" />
+          </Key>
+          <Property Name="pets_appearanceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pets_breedID" Type="Int32" />
+          <Property Name="pets_colors" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_breeddescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_bodysize" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_origin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_characterdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_careinstruction" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_hairfigure" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="pets_ID" Type="Int32" />
+          <NavigationProperty Name="pets" Relationship="Self.FK_pets_appearance_pets" FromRole="pets_appearance" ToRole="pets" />
+          <NavigationProperty Name="pets_breed" Relationship="Self.FK_pets_features_pets_breed" FromRole="pets_appearance" ToRole="pets_breed" />
+        </EntityType>
+        <EntityType Name="pets_breed">
+          <Key>
+            <PropertyRef Name="pets_breedID" />
+          </Key>
+          <Property Name="pets_breedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pets_breedname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pets_breedpictureID" Type="Int32" />
+          <Property Name="pets_speciesID" Type="Int32" />
+          <Property Name="pets_breedpictureextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ownage_notice" Relationship="Self.FK_ownage_notice_pets_breed" FromRole="pets_breed" ToRole="ownage_notice" />
+          <NavigationProperty Name="pets" Relationship="Self.FK_pets_pets_breed" FromRole="pets_breed" ToRole="pets" />
+          <NavigationProperty Name="pets_appearance" Relationship="Self.FK_pets_features_pets_breed" FromRole="pets_breed" ToRole="pets_appearance" />
+          <NavigationProperty Name="pets_breedpictures" Relationship="Self.FK_pets_breed_pets_breedpictures" FromRole="pets_breed" ToRole="pets_breedpictures" />
+          <NavigationProperty Name="pets_species" Relationship="Self.FK_pets_species_pets_breed" FromRole="pets_breed" ToRole="pets_species" />
+        </EntityType>
+        <EntityType Name="pets_breedpictures">
+          <Key>
+            <PropertyRef Name="pets_breedpictureID" />
+          </Key>
+          <Property Name="pets_breedpictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pets_breedpictureextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="pets_defaultextension" Type="Boolean" />
+          <NavigationProperty Name="pets_breed" Relationship="Self.FK_pets_breed_pets_breedpictures" FromRole="pets_breedpictures" ToRole="pets_breed" />
+        </EntityType>
+        <EntityType Name="pets_species">
+          <Key>
+            <PropertyRef Name="pets_speciesID" />
+          </Key>
+          <Property Name="pets_speciesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pets_speciesname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pets_breedID" Type="Int32" />
+          <NavigationProperty Name="ownage_notice" Relationship="Self.FK_ownage_notice_pets_species" FromRole="pets_species" ToRole="ownage_notice" />
+          <NavigationProperty Name="pets" Relationship="Self.FK_pets_pets_species" FromRole="pets_species" ToRole="pets" />
+          <NavigationProperty Name="pets_breed" Relationship="Self.FK_pets_species_pets_breed" FromRole="pets_species" ToRole="pets_breed" />
+        </EntityType>
+        <EntityType Name="provinces">
+          <Key>
+            <PropertyRef Name="provinces_ID" />
+          </Key>
+          <Property Name="provinces_ID" Type="Int32" Nullable="false" />
+          <Property Name="provinces_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SliderImages">
+          <Key>
+            <PropertyRef Name="SliderImages_ID" />
+          </Key>
+          <Property Name="SliderImages_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SliderImages_extension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="user_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="user_age" Type="Int32" />
+          <Property Name="user_gender" Type="Boolean" />
+          <Property Name="user_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_firstpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_againpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_pictureextension" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ownage_notice" Relationship="Self.FK_ownage_notice_user" FromRole="user" ToRole="ownage_notice" />
+          <NavigationProperty Name="user_adress" Relationship="Self.FK_user_adress_user" FromRole="user" ToRole="user_adress" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_user_pets_user" FromRole="user" ToRole="user_pets" />
+          <NavigationProperty Name="user_pictures" Relationship="Self.FK_user_pictures_user" FromRole="user" ToRole="user_pictures" />
+        </EntityType>
+        <EntityType Name="user_adress">
+          <Key>
+            <PropertyRef Name="user_adressID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" />
+          <Property Name="user_adressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="user_adress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="user_postcode" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_adress_user" FromRole="user_adress" ToRole="user" />
+        </EntityType>
+        <EntityType Name="user_pets">
+          <Key>
+            <PropertyRef Name="pet_ID" />
+          </Key>
+          <Property Name="user_ID" Type="Int32" Nullable="false" />
+          <Property Name="pet_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_species" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_breed" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_petsfeaturesID" Type="Int32" />
+          <Property Name="pet_pictureID" Type="Int32" />
+          <Property Name="vets_ID" Type="Int32" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK_appointments_user_pets" FromRole="user_pets" ToRole="appointments" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_pets_user" FromRole="user_pets" ToRole="user" />
+          <NavigationProperty Name="vets" Relationship="Self.FK_user_pets_vets" FromRole="user_pets" ToRole="vets" />
+          <NavigationProperty Name="user_petsfeatures" Relationship="Self.FK_user_petsfeatures_user_pets" FromRole="user_pets" ToRole="user_petsfeatures" />
+          <NavigationProperty Name="user_petspicture" Relationship="Self.FK_user_petspicture_user_pets" FromRole="user_pets" ToRole="user_petspicture" />
+          <NavigationProperty Name="vaccine_calendar" Relationship="Self.FK_vaccine_calendar_user_pets" FromRole="user_pets" ToRole="vaccine_calendar" />
+        </EntityType>
+        <EntityType Name="user_petsfeatures">
+          <Key>
+            <PropertyRef Name="pet_featuresID" />
+          </Key>
+          <Property Name="pet_ID" Type="Int32" />
+          <Property Name="pet_featuresID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_colors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_eyescolors" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_kilo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="pet_height" Type="Int32" />
+          <Property Name="pet_gender" Type="Boolean" />
+          <Property Name="pet_age" Type="Int32" />
+          <Property Name="pet_birthday" Type="DateTime" Precision="0" />
+          <Property Name="pet_birthplace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_user_petsfeatures_user_pets" FromRole="user_petsfeatures" ToRole="user_pets" />
+        </EntityType>
+        <EntityType Name="user_petspicture">
+          <Key>
+            <PropertyRef Name="pet_pictureID" />
+          </Key>
+          <Property Name="pet_pictureID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_ID" Type="Int32" />
+          <Property Name="pet_pictureextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_user_petspicture_user_pets" FromRole="user_petspicture" ToRole="user_pets" />
+        </EntityType>
+        <EntityType Name="user_pictures">
+          <Key>
+            <PropertyRef Name="user_picturesID" />
+          </Key>
+          <Property Name="user_picturesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_pictureextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="user_ID" Type="Int32" />
+          <NavigationProperty Name="user" Relationship="Self.FK_user_pictures_user" FromRole="user_pictures" ToRole="user" />
+        </EntityType>
+        <EntityType Name="vaccine_calendar">
+          <Key>
+            <PropertyRef Name="vaccinecalendar_ID" />
+          </Key>
+          <Property Name="vaccinecalendar_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pet_ID" Type="Int32" />
+          <Property Name="vets_ID" Type="Int32" />
+          <Property Name="vaccine_days" Type="DateTime" Precision="0" />
+          <Property Name="vaccine_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_vaccine_calendar_user_pets" FromRole="vaccine_calendar" ToRole="user_pets" />
+          <NavigationProperty Name="vets" Relationship="Self.FK_vaccine_calendar_vets" FromRole="vaccine_calendar" ToRole="vets" />
+          <Property Name="vaccine_status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vaccinestatus_ID" Type="Int32" />
+          <NavigationProperty Name="vaccine_status1" Relationship="petscareModel.FK_vaccine_calendar_vaccine_status" FromRole="vaccine_calendar" ToRole="vaccine_status" />
+        </EntityType>
+        <EntityType Name="vets">
+          <Key>
+            <PropertyRef Name="vets_ID" />
+          </Key>
+          <Property Name="vets_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vets_firstname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_lastname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_telephone" Type="String" MaxLength="11" FixedLength="true" Unicode="false" />
+          <Property Name="vets_gender" Type="Boolean" />
+          <Property Name="vets_age" Type="Int32" />
+          <Property Name="vets_firstpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_passwordagain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="appointments" Relationship="Self.FK_appointments_vets" FromRole="vets" ToRole="appointments" />
+          <NavigationProperty Name="user_pets" Relationship="Self.FK_user_pets_vets" FromRole="vets" ToRole="user_pets" />
+          <NavigationProperty Name="vaccine_calendar" Relationship="Self.FK_vaccine_calendar_vets" FromRole="vets" ToRole="vaccine_calendar" />
+          <NavigationProperty Name="vets_adress" Relationship="Self.FK_vets_adress_vets" FromRole="vets" ToRole="vets_adress" />
+          <NavigationProperty Name="vets_pictures" Relationship="Self.FK_vets_pictures_vets" FromRole="vets" ToRole="vets_pictures" />
+        </EntityType>
+        <EntityType Name="vets_adress">
+          <Key>
+            <PropertyRef Name="vets_adressID" />
+          </Key>
+          <Property Name="vets_adressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vets_country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_province" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vets_adress1" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="vets_postcode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Name="vets_ID" Type="Int32" />
+          <NavigationProperty Name="vets" Relationship="Self.FK_vets_adress_vets" FromRole="vets_adress" ToRole="vets" />
+        </EntityType>
+        <EntityType Name="vets_pictures">
+          <Key>
+            <PropertyRef Name="vets_picturesID" />
+          </Key>
+          <Property Name="vets_picturesID" Type="Int32" Nullable="false" />
+          <Property Name="vets_picturesextension" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="vets_ID" Type="Int32" />
+          <NavigationProperty Name="vets" Relationship="Self.FK_vets_pictures_vets" FromRole="vets_pictures" ToRole="vets" />
+        </EntityType>
+        <Association Name="FK_appointments_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="appointments">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_appointments_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="appointments" Type="Self.appointments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="appointments">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pet_gender">
+          <End Role="pet_gender" Type="Self.pet_gender" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pet_gender">
+              <PropertyRef Name="petgender_ID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petgenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petbreedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_pets_species">
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_species">
+              <PropertyRef Name="pets_speciesID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="notice_petspeciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownage_notice_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="ownage_notice">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ownagenotices_pictures_ownage_notice">
+          <End Role="ownage_notice" Type="Self.ownage_notice" Multiplicity="0..1" />
+          <End Role="ownagenotices_pictures" Type="Self.ownagenotices_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ownage_notice">
+              <PropertyRef Name="notice_ID" />
+            </Principal>
+            <Dependent Role="ownagenotices_pictures">
+              <PropertyRef Name="notice_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_appearance_pets">
+          <End Role="pets" Type="Self.pets" Multiplicity="0..1" />
+          <End Role="pets_appearance" Type="Self.pets_appearance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets">
+              <PropertyRef Name="pets_ID" />
+            </Principal>
+            <Dependent Role="pets_appearance">
+              <PropertyRef Name="pets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets" Type="Self.pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_pets_species">
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="0..1" />
+          <End Role="pets" Type="Self.pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_species">
+              <PropertyRef Name="pets_speciesID" />
+            </Principal>
+            <Dependent Role="pets">
+              <PropertyRef Name="pets_speciesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_features_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets_appearance" Type="Self.pets_appearance" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets_appearance">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_breed_pets_breedpictures">
+          <End Role="pets_breedpictures" Type="Self.pets_breedpictures" Multiplicity="0..1" />
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breedpictures">
+              <PropertyRef Name="pets_breedpictureID" />
+            </Principal>
+            <Dependent Role="pets_breed">
+              <PropertyRef Name="pets_breedpictureID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pets_species_pets_breed">
+          <End Role="pets_breed" Type="Self.pets_breed" Multiplicity="0..1" />
+          <End Role="pets_species" Type="Self.pets_species" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="pets_breed">
+              <PropertyRef Name="pets_breedID" />
+            </Principal>
+            <Dependent Role="pets_species">
+              <PropertyRef Name="pets_breedID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_adress_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user_adress" Type="Self.user_adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_adress">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pets_user">
+          <End Role="user" Type="Self.user" Multiplicity="1" />
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_pets">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pictures_user">
+          <End Role="user" Type="Self.user" Multiplicity="0..1" />
+          <End Role="user_pictures" Type="Self.user_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="user_ID" />
+            </Principal>
+            <Dependent Role="user_pictures">
+              <PropertyRef Name="user_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_pets_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="user_pets">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_petsfeatures_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="user_petsfeatures" Type="Self.user_petsfeatures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="user_petsfeatures">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_petspicture_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="user_petspicture" Type="Self.user_petspicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="user_petspicture">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaccine_calendar_user_pets">
+          <End Role="user_pets" Type="Self.user_pets" Multiplicity="0..1" />
+          <End Role="vaccine_calendar" Type="Self.vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_pets">
+              <PropertyRef Name="pet_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="pet_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vaccine_calendar_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vaccine_calendar" Type="Self.vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vets_adress_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vets_adress" Type="Self.vets_adress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vets_adress">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_vets_pictures_vets">
+          <End Role="vets" Type="Self.vets" Multiplicity="0..1" />
+          <End Role="vets_pictures" Type="Self.vets_pictures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vets">
+              <PropertyRef Name="vets_ID" />
+            </Principal>
+            <Dependent Role="vets_pictures">
+              <PropertyRef Name="vets_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="petscareEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="admin" EntityType="Self.admin" />
+          <EntitySet Name="appointments" EntityType="Self.appointments" />
+          <EntitySet Name="ownage_notice" EntityType="Self.ownage_notice" />
+          <EntitySet Name="ownagenotices_pictures" EntityType="Self.ownagenotices_pictures" />
+          <EntitySet Name="pet_gender" EntityType="Self.pet_gender" />
+          <EntitySet Name="pets" EntityType="Self.pets" />
+          <EntitySet Name="pets_appearance" EntityType="Self.pets_appearance" />
+          <EntitySet Name="pets_breed" EntityType="Self.pets_breed" />
+          <EntitySet Name="pets_breedpictures" EntityType="Self.pets_breedpictures" />
+          <EntitySet Name="pets_species" EntityType="Self.pets_species" />
+          <EntitySet Name="provinces" EntityType="Self.provinces" />
+          <EntitySet Name="SliderImages" EntityType="Self.SliderImages" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="user" EntityType="Self.user" />
+          <EntitySet Name="user_adress" EntityType="Self.user_adress" />
+          <EntitySet Name="user_pets" EntityType="Self.user_pets" />
+          <EntitySet Name="user_petsfeatures" EntityType="Self.user_petsfeatures" />
+          <EntitySet Name="user_petspicture" EntityType="Self.user_petspicture" />
+          <EntitySet Name="user_pictures" EntityType="Self.user_pictures" />
+          <EntitySet Name="vaccine_calendar" EntityType="Self.vaccine_calendar" />
+          <EntitySet Name="vets" EntityType="Self.vets" />
+          <EntitySet Name="vets_adress" EntityType="Self.vets_adress" />
+          <EntitySet Name="vets_pictures" EntityType="Self.vets_pictures" />
+          <AssociationSet Name="FK_appointments_user_pets" Association="Self.FK_appointments_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="appointments" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_appointments_vets" Association="Self.FK_appointments_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="appointments" EntitySet="appointments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pet_gender" Association="Self.FK_ownage_notice_pet_gender">
+            <End Role="pet_gender" EntitySet="pet_gender" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pets_breed" Association="Self.FK_ownage_notice_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_pets_species" Association="Self.FK_ownage_notice_pets_species">
+            <End Role="pets_species" EntitySet="pets_species" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownage_notice_user" Association="Self.FK_ownage_notice_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ownagenotices_pictures_ownage_notice" Association="Self.FK_ownagenotices_pictures_ownage_notice">
+            <End Role="ownage_notice" EntitySet="ownage_notice" />
+            <End Role="ownagenotices_pictures" EntitySet="ownagenotices_pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_appearance_pets" Association="Self.FK_pets_appearance_pets">
+            <End Role="pets" EntitySet="pets" />
+            <End Role="pets_appearance" EntitySet="pets_appearance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_pets_breed" Association="Self.FK_pets_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets" EntitySet="pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_pets_species" Association="Self.FK_pets_pets_species">
+            <End Role="pets_species" EntitySet="pets_species" />
+            <End Role="pets" EntitySet="pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_features_pets_breed" Association="Self.FK_pets_features_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets_appearance" EntitySet="pets_appearance" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_breed_pets_breedpictures" Association="Self.FK_pets_breed_pets_breedpictures">
+            <End Role="pets_breedpictures" EntitySet="pets_breedpictures" />
+            <End Role="pets_breed" EntitySet="pets_breed" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pets_species_pets_breed" Association="Self.FK_pets_species_pets_breed">
+            <End Role="pets_breed" EntitySet="pets_breed" />
+            <End Role="pets_species" EntitySet="pets_species" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_adress_user" Association="Self.FK_user_adress_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_adress" EntitySet="user_adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pets_user" Association="Self.FK_user_pets_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_pets" EntitySet="user_pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pictures_user" Association="Self.FK_user_pictures_user">
+            <End Role="user" EntitySet="user" />
+            <End Role="user_pictures" EntitySet="user_pictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_pets_vets" Association="Self.FK_user_pets_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="user_pets" EntitySet="user_pets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_petsfeatures_user_pets" Association="Self.FK_user_petsfeatures_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="user_petsfeatures" EntitySet="user_petsfeatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_petspicture_user_pets" Association="Self.FK_user_petspicture_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="user_petspicture" EntitySet="user_petspicture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaccine_calendar_user_pets" Association="Self.FK_vaccine_calendar_user_pets">
+            <End Role="user_pets" EntitySet="user_pets" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vaccine_calendar_vets" Association="Self.FK_vaccine_calendar_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vets_adress_vets" Association="Self.FK_vets_adress_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vets_adress" EntitySet="vets_adress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_vets_pictures_vets" Association="Self.FK_vets_pictures_vets">
+            <End Role="vets" EntitySet="vets" />
+            <End Role="vets_pictures" EntitySet="vets_pictures" />
+          </AssociationSet>
+          <EntitySet Name="vaccine_status" EntityType="petscareModel.vaccine_status" />
+          <AssociationSet Name="FK_vaccine_calendar_vaccine_status" Association="petscareModel.FK_vaccine_calendar_vaccine_status">
+            <End Role="vaccine_status" EntitySet="vaccine_status" />
+            <End Role="vaccine_calendar" EntitySet="vaccine_calendar" />
+          </AssociationSet>
+          <EntitySet Name="Contact" EntityType="petscareModel.Contact" />
+        </EntityContainer>
+        <EntityType Name="vaccine_status">
+          <Key>
+            <PropertyRef Name="vaccinestatus_ID" />
+          </Key>
+          <Property Name="vaccinestatus_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="vaccinestatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="vaccine_calendar" Relationship="petscareModel.FK_vaccine_calendar_vaccine_status" FromRole="vaccine_status" ToRole="vaccine_calendar" />
+        </EntityType>
+        <Association Name="FK_vaccine_calendar_vaccine_status">
+          <End Type="petscareModel.vaccine_status" Role="vaccine_status" Multiplicity="0..1" />
+          <End Type="petscareModel.vaccine_calendar" Role="vaccine_calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="vaccine_status">
+              <PropertyRef Name="vaccinestatus_ID" />
+            </Principal>
+            <Dependent Role="vaccine_calendar">
+              <PropertyRef Name="vaccinestatus_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="contact_ID" />
+          </Key>
+          <Property Name="contact_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="contact_userName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_userSurname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_message" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="petscareModelStoreContainer" CdmEntityContainer="petscareEntities">
+          <EntitySetMapping Name="admin">
+            <EntityTypeMapping TypeName="petscareModel.admin">
+              <MappingFragment StoreEntitySet="admin">
+                <ScalarProperty Name="admin_ID" ColumnName="admin_ID" />
+                <ScalarProperty Name="admin_firstname" ColumnName="admin_firstname" />
+                <ScalarProperty Name="admin_lastname" ColumnName="admin_lastname" />
+                <ScalarProperty Name="admin_email" ColumnName="admin_email" />
+                <ScalarProperty Name="admin_telephone" ColumnName="admin_telephone" />
+                <ScalarProperty Name="admin_age" ColumnName="admin_age" />
+                <ScalarProperty Name="admin_gender" ColumnName="admin_gender" />
+                <ScalarProperty Name="admin_firstpassword" ColumnName="admin_firstpassword" />
+                <ScalarProperty Name="admin_againpassword" ColumnName="admin_againpassword" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="appointments">
+            <EntityTypeMapping TypeName="petscareModel.appointments">
+              <MappingFragment StoreEntitySet="appointments">
+                <ScalarProperty Name="appointments_ID" ColumnName="appointments_ID" />
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+                <ScalarProperty Name="pet_ID" ColumnName="pet_ID" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ownage_notice">
+            <EntityTypeMapping TypeName="petscareModel.ownage_notice">
+              <MappingFragment StoreEntitySet="ownage_notice">
+                <ScalarProperty Name="notice_ID" ColumnName="notice_ID" />
+                <ScalarProperty Name="notice_title" ColumnName="notice_title" />
+                <ScalarProperty Name="notice_description" ColumnName="notice_description" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="notice_picturesextension" ColumnName="notice_picturesextension" />
+                <ScalarProperty Name="notice_date" ColumnName="notice_date" />
+                <ScalarProperty Name="notice_petname" ColumnName="notice_petname" />
+                <ScalarProperty Name="notice_petage" ColumnName="notice_petage" />
+                <ScalarProperty Name="notice_petgender" ColumnName="notice_petgender" />
+                <ScalarProperty Name="notice_province" ColumnName="notice_province" />
+                <ScalarProperty Name="notice_pictureID" ColumnName="notice_pictureID" />
+                <ScalarProperty Name="notice_petgenderID" ColumnName="notice_petgenderID" />
+                <ScalarProperty Name="notice_petspeciesID" ColumnName="notice_petspeciesID" />
+                <ScalarProperty Name="notice_petbreedID" ColumnName="notice_petbreedID" />
+                <ScalarProperty Name="notice_petbreedname" ColumnName="notice_petbreedname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ownagenotices_pictures">
+            <EntityTypeMapping TypeName="petscareModel.ownagenotices_pictures">
+              <MappingFragment StoreEntitySet="ownagenotices_pictures">
+                <ScalarProperty Name="notice_pictureID" ColumnName="notice_pictureID" />
+                <ScalarProperty Name="notice_picturesextension" ColumnName="notice_picturesextension" />
+                <ScalarProperty Name="notice_ID" ColumnName="notice_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pet_gender">
+            <EntityTypeMapping TypeName="petscareModel.pet_gender">
+              <MappingFragment StoreEntitySet="pet_gender">
+                <ScalarProperty Name="petgender_ID" ColumnName="petgender_ID" />
+                <ScalarProperty Name="petgender_name" ColumnName="petgender_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pets">
+            <EntityTypeMapping TypeName="petscareModel.pets">
+              <MappingFragment StoreEntitySet="pets">
+                <ScalarProperty Name="pets_ID" ColumnName="pets_ID" />
+                <ScalarProperty Name="pets_speciesID" ColumnName="pets_speciesID" />
+                <ScalarProperty Name="pets_breedID" ColumnName="pets_breedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pets_appearance">
+            <EntityTypeMapping TypeName="petscareModel.pets_appearance">
+              <MappingFragment StoreEntitySet="pets_appearance">
+                <ScalarProperty Name="pets_appearanceID" ColumnName="pets_appearanceID" />
+                <ScalarProperty Name="pets_breedID" ColumnName="pets_breedID" />
+                <ScalarProperty Name="pets_colors" ColumnName="pets_colors" />
+                <ScalarProperty Name="pets_breeddescription" ColumnName="pets_breeddescription" />
+                <ScalarProperty Name="pets_bodysize" ColumnName="pets_bodysize" />
+                <ScalarProperty Name="pets_origin" ColumnName="pets_origin" />
+                <ScalarProperty Name="pets_characterdescription" ColumnName="pets_characterdescription" />
+                <ScalarProperty Name="pets_careinstruction" ColumnName="pets_careinstruction" />
+                <ScalarProperty Name="pets_hairfigure" ColumnName="pets_hairfigure" />
+                <ScalarProperty Name="pets_ID" ColumnName="pets_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pets_breed">
+            <EntityTypeMapping TypeName="petscareModel.pets_breed">
+              <MappingFragment StoreEntitySet="pets_breed">
+                <ScalarProperty Name="pets_breedID" ColumnName="pets_breedID" />
+                <ScalarProperty Name="pets_breedname" ColumnName="pets_breedname" />
+                <ScalarProperty Name="pets_breedpictureID" ColumnName="pets_breedpictureID" />
+                <ScalarProperty Name="pets_speciesID" ColumnName="pets_speciesID" />
+                <ScalarProperty Name="pets_breedpictureextension" ColumnName="pets_breedpictureextension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pets_breedpictures">
+            <EntityTypeMapping TypeName="petscareModel.pets_breedpictures">
+              <MappingFragment StoreEntitySet="pets_breedpictures">
+                <ScalarProperty Name="pets_breedpictureID" ColumnName="pets_breedpictureID" />
+                <ScalarProperty Name="pets_breedpictureextension" ColumnName="pets_breedpictureextension" />
+                <ScalarProperty Name="pets_defaultextension" ColumnName="pets_defaultextension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pets_species">
+            <EntityTypeMapping TypeName="petscareModel.pets_species">
+              <MappingFragment StoreEntitySet="pets_species">
+                <ScalarProperty Name="pets_speciesID" ColumnName="pets_speciesID" />
+                <ScalarProperty Name="pets_speciesname" ColumnName="pets_speciesname" />
+                <ScalarProperty Name="pets_breedID" ColumnName="pets_breedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="provinces">
+            <EntityTypeMapping TypeName="petscareModel.provinces">
+              <MappingFragment StoreEntitySet="provinces">
+                <ScalarProperty Name="provinces_ID" ColumnName="provinces_ID" />
+                <ScalarProperty Name="provinces_name" ColumnName="provinces_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderImages">
+            <EntityTypeMapping TypeName="petscareModel.SliderImages">
+              <MappingFragment StoreEntitySet="SliderImages">
+                <ScalarProperty Name="SliderImages_ID" ColumnName="SliderImages_ID" />
+                <ScalarProperty Name="SliderImages_extension" ColumnName="SliderImages_extension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="petscareModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user">
+            <EntityTypeMapping TypeName="petscareModel.user">
+              <MappingFragment StoreEntitySet="user">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="user_firstname" ColumnName="user_firstname" />
+                <ScalarProperty Name="user_lastname" ColumnName="user_lastname" />
+                <ScalarProperty Name="user_email" ColumnName="user_email" />
+                <ScalarProperty Name="user_telephone" ColumnName="user_telephone" />
+                <ScalarProperty Name="user_age" ColumnName="user_age" />
+                <ScalarProperty Name="user_gender" ColumnName="user_gender" />
+                <ScalarProperty Name="user_username" ColumnName="user_username" />
+                <ScalarProperty Name="user_firstpassword" ColumnName="user_firstpassword" />
+                <ScalarProperty Name="user_againpassword" ColumnName="user_againpassword" />
+                <ScalarProperty Name="user_pictureextension" ColumnName="user_pictureextension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_adress">
+            <EntityTypeMapping TypeName="petscareModel.user_adress">
+              <MappingFragment StoreEntitySet="user_adress">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="user_adressID" ColumnName="user_adressID" />
+                <ScalarProperty Name="user_country" ColumnName="user_country" />
+                <ScalarProperty Name="user_province" ColumnName="user_province" />
+                <ScalarProperty Name="user_adress1" ColumnName="user_adress" />
+                <ScalarProperty Name="user_postcode" ColumnName="user_postcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_pets">
+            <EntityTypeMapping TypeName="petscareModel.user_pets">
+              <MappingFragment StoreEntitySet="user_pets">
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+                <ScalarProperty Name="pet_ID" ColumnName="pet_ID" />
+                <ScalarProperty Name="pet_name" ColumnName="pet_name" />
+                <ScalarProperty Name="pet_species" ColumnName="pet_species" />
+                <ScalarProperty Name="pet_breed" ColumnName="pet_breed" />
+                <ScalarProperty Name="pet_petsfeaturesID" ColumnName="pet_petsfeaturesID" />
+                <ScalarProperty Name="pet_pictureID" ColumnName="pet_pictureID" />
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_petsfeatures">
+            <EntityTypeMapping TypeName="petscareModel.user_petsfeatures">
+              <MappingFragment StoreEntitySet="user_petsfeatures">
+                <ScalarProperty Name="pet_ID" ColumnName="pet_ID" />
+                <ScalarProperty Name="pet_featuresID" ColumnName="pet_featuresID" />
+                <ScalarProperty Name="pet_colors" ColumnName="pet_colors" />
+                <ScalarProperty Name="pet_eyescolors" ColumnName="pet_eyescolors" />
+                <ScalarProperty Name="pet_kilo" ColumnName="pet_kilo" />
+                <ScalarProperty Name="pet_height" ColumnName="pet_height" />
+                <ScalarProperty Name="pet_gender" ColumnName="pet_gender" />
+                <ScalarProperty Name="pet_age" ColumnName="pet_age" />
+                <ScalarProperty Name="pet_birthday" ColumnName="pet_birthday" />
+                <ScalarProperty Name="pet_birthplace" ColumnName="pet_birthplace" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_petspicture">
+            <EntityTypeMapping TypeName="petscareModel.user_petspicture">
+              <MappingFragment StoreEntitySet="user_petspicture">
+                <ScalarProperty Name="pet_pictureID" ColumnName="pet_pictureID" />
+                <ScalarProperty Name="pet_ID" ColumnName="pet_ID" />
+                <ScalarProperty Name="pet_pictureextension" ColumnName="pet_pictureextension" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_pictures">
+            <EntityTypeMapping TypeName="petscareModel.user_pictures">
+              <MappingFragment StoreEntitySet="user_pictures">
+                <ScalarProperty Name="user_picturesID" ColumnName="user_picturesID" />
+                <ScalarProperty Name="user_pictureextension" ColumnName="user_pictureextension" />
+                <ScalarProperty Name="user_ID" ColumnName="user_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vaccine_calendar">
+            <EntityTypeMapping TypeName="petscareModel.vaccine_calendar">
+              <MappingFragment StoreEntitySet="vaccine_calendar">
+                <ScalarProperty Name="vaccinestatus_ID" ColumnName="vaccinestatus_ID" />
+                <ScalarProperty Name="vaccine_status" ColumnName="vaccine_status" />
+                <ScalarProperty Name="vaccinecalendar_ID" ColumnName="vaccinecalendar_ID" />
+                <ScalarProperty Name="pet_ID" ColumnName="pet_ID" />
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+                <ScalarProperty Name="vaccine_days" ColumnName="vaccine_days" />
+                <ScalarProperty Name="vaccine_name" ColumnName="vaccine_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vets">
+            <EntityTypeMapping TypeName="petscareModel.vets">
+              <MappingFragment StoreEntitySet="vets">
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+                <ScalarProperty Name="vets_firstname" ColumnName="vets_firstname" />
+                <ScalarProperty Name="vets_lastname" ColumnName="vets_lastname" />
+                <ScalarProperty Name="vets_email" ColumnName="vets_email" />
+                <ScalarProperty Name="vets_telephone" ColumnName="vets_telephone" />
+                <ScalarProperty Name="vets_gender" ColumnName="vets_gender" />
+                <ScalarProperty Name="vets_age" ColumnName="vets_age" />
+                <ScalarProperty Name="vets_firstpassword" ColumnName="vets_firstpassword" />
+                <ScalarProperty Name="vets_passwordagain" ColumnName="vets_passwordagain" />
+                <ScalarProperty Name="vets_username" ColumnName="vets_username" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vets_adress">
+            <EntityTypeMapping TypeName="petscareModel.vets_adress">
+              <MappingFragment StoreEntitySet="vets_adress">
+                <ScalarProperty Name="vets_adressID" ColumnName="vets_adressID" />
+                <ScalarProperty Name="vets_country" ColumnName="vets_country" />
+                <ScalarProperty Name="vets_province" ColumnName="vets_province" />
+                <ScalarProperty Name="vets_adress1" ColumnName="vets_adress" />
+                <ScalarProperty Name="vets_postcode" ColumnName="vets_postcode" />
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vets_pictures">
+            <EntityTypeMapping TypeName="petscareModel.vets_pictures">
+              <MappingFragment StoreEntitySet="vets_pictures">
+                <ScalarProperty Name="vets_picturesID" ColumnName="vets_picturesID" />
+                <ScalarProperty Name="vets_picturesextension" ColumnName="vets_picturesextension" />
+                <ScalarProperty Name="vets_ID" ColumnName="vets_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vaccine_status">
+            <EntityTypeMapping TypeName="petscareModel.vaccine_status">
+              <MappingFragment StoreEntitySet="vaccine_status">
+                <ScalarProperty Name="vaccinestatus" ColumnName="vaccinestatus" />
+                <ScalarProperty Name="vaccinestatus_ID" ColumnName="vaccinestatus_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="petscareModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="contact_message" ColumnName="contact_message" />
+                <ScalarProperty Name="contact_email" ColumnName="contact_email" />
+                <ScalarProperty Name="contact_userSurname" ColumnName="contact_userSurname" />
+                <ScalarProperty Name="contact_userName" ColumnName="contact_userName" />
+                <ScalarProperty Name="contact_ID" ColumnName="contact_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

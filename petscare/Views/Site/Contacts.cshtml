@@ -1,0 +1,127 @@
+﻿@model petscare.Models.Contact
+
+@{
+    ViewBag.Title = "Contacts";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>Bizimle İletişime Geçin</h1>
+                <p>Bize mesaj gönderebilir ayrıca adresimizi öğrenebilirsiniz.</p>
+            </div>
+            <div class="col-sm-6">
+                <ul class="breadcrumb pull-right">
+                    <li><a href="~/Site/Index">Anasayfa</a></li>
+                    <li class="active">İletişim</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact-page" class="container">
+    <div class="row">
+        <div class="col-sm-8" style="width:500px;">
+            <h4>İletişim Formu</h4>
+            <div class="status alert alert-success" style="display: none"></div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group" style="width:450px;">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.contact_userName, new { htmlAttributes = new { @class = "form-control", placeholder="Ad",required="required" } })
+                            @Html.ValidationMessageFor(model => model.contact_userName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="width:450px;">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.contact_userSurname, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.contact_userSurname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="width:450px;">
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.contact_email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", required = "required" } })
+                            @Html.ValidationMessageFor(model => model.contact_email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group" style="width:450px;">
+                        <div class="col-md-10" style="width:350px;" >
+                            @Html.TextAreaFor(model => model.contact_message, new { htmlAttributes = new { @class = "form-control", placeholder = "Mesaj", required = "required", width="350", } })
+                            @Html.ValidationMessageFor(model => model.contact_message, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div style="padding-left:5px;">
+                            <input type="submit" value="Mesaj Gönder" class="btn btn-primary btn-lg" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-sm-2">
+            <h4 style="padding-left:150px;">Adresimiz</h4>
+            <div style="padding-left:150px;">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3202.772790950232!2d34.31075431455885!3d36.60778088620839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14d863233f9b43f9%3A0x45b7780d11efc0f8!2sErdemli+Uygulamal%C4%B1+Teknoloji+ve+%C4%B0%C5%9Fletmecilik+Y%C3%BCksekokulu!5e0!3m2!1str!2str!4v1545863479328" width="400" height="215" frameborder="0" style="border:0" allowfullscreen></iframe>
+            </div>
+            </div><!--/.col-sm-4-->
+    </div>
+</section>
+<!--/#contact-page-->
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Contact</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.contact_userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contact_userName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact_userName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.contact_userSurname, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contact_userSurname, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact_userSurname, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.contact_email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contact_email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact_email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.contact_message, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.contact_message, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.contact_message, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+

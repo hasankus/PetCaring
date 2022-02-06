@@ -1,0 +1,66 @@
+﻿@model IEnumerable<petscare.Models.vaccine_calendar>
+
+@{
+    ViewBag.Title = "UserPetVaccineList";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Aşı Takvimi</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                   Aşı Günü
+                </th>
+                <th>
+                    Aşı Adı
+                </th>
+                <th>
+                    Pet Adı
+                </th>
+                <th>
+                   Pet Sahibi
+                </th>
+                <th>
+                    Aşı Durumu
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vaccine_days)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vaccine_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_pets.pet_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user_pets.user.user_firstname) @Html.DisplayFor(modelItem => item.user_pets.user.user_lastname)
+                    </td>
+                    <td>
+                        @if (item.vaccine_status == null)
+                        {
+                            <p>Yapılmadı</p>
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.vaccine_status)
+                        }
+
+                    </td>
+                    <td>
+                        @Html.ActionLink("Aşı Durumu", "UserPetVaccineStatus", "Veterinary", new { petID = item.user_pets.pet_ID, vaccinecalendarID= item.vaccinecalendar_ID }, new { @style = "text-decoration:none;color:orange;" })
+                    </td>
+
+                </tr>
+                                }
+
+        </table>
+        </div></section>

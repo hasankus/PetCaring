@@ -1,0 +1,66 @@
+﻿@model petscare.Models.admin
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Views/Shared/AdminLoginLayout.cshtml";
+}
+
+<div class="card card-login mx-auto mt-5">
+    <div style="text-align:center;" class="card-header">Giriş Yap</div>
+
+    @using (Html.BeginForm("Login", "AdminLogin", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="card-body">
+            <form>
+                <div class="form-group">
+                    <div class="col-md-10">
+                        <img style="margin-left:90px;" src="~/SiteTemplate/images/logo.jpg" />
+                    </div>
+                </div>
+               
+                    <div class="form-group">
+                        <div style="margin-left:30px;" class="col-md-10">
+                            @Html.EditorFor(model => model.admin_email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", required = "required" } })
+                        </div>
+                    </div>
+                
+                    <div class="form-group">
+                        <div style="margin-left:30px;" class="col-md-10">
+                            @Html.EditorFor(model => model.admin_firstpassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre", required = "required", type = "password" } })
+                            @if (Session["error"] != null)
+                            {
+                                <a class="text-danger" style="margin-left:30px;">@Session["error"]</a>
+                            }
+                                
+                            else if (Session["successSignUp"] != null)
+                                {
+                                    <a class="text-success" style="margin-left:40px;">@Session["successSignUp"]</a>
+                                }
+                            </div>
+                     
+                    </div>
+                @*<div class="form-group">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="remember-me">
+                    Parolayı Hatırla
+                </label>
+            </div>
+        </div>*@
+                <div class="form-group">
+                    <div style="margin-left:30px;" class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Giriş Yap" class="btn btn-primary btn-block" />
+                    </div>
+                </div>
+
+            </form>
+            <div class="text-center">
+                <a class="d-block small mt-3" href="/AdminSignUp/SignUp">Üye olmadın mı? Hemen Üye Ol!</a>
+                <a class="d-block small" href="forgot-password.html">Şifreni mi Unuttun? Buradan yeni şifre alabilirsin.</a>
+            </div>
+        </div>
+    }
+</div>
+
+

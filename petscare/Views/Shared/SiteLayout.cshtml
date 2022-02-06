@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Pet Bakım | @ViewBag.Title</title>
+
+    <link href="~/Content/Site/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/Content/Site/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Site/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/Site/css/animate.css" rel="stylesheet">
+    <link href="~/Content/Site/css/main.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+
+
+</head>
+<body>
+    <header style="background-color:cornflowerblue;" class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="~/Site/Index"><span style="padding-left:5px;font-size:25px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color:black;">PET</span><img style="width:70px;height:70px;" src="~/Content/Site/images/pets-512.png" /><span style="padding-right:5px;font-size:25px;font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;color:black;">BAKIM</span></a>
+            </div>
+            <div class="collapse navbar-collapse" style="padding-top:10px;">
+                @{
+                    Html.RenderAction("Menu", "Site");
+                }
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+
+    <section style="background-color:cornflowerblue;" id="bottom" class="wet-asphalt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h4>Pet Bakım</h4>
+                    <p>Satın Alma Sahiplen!</p>
+                    <p></p>
+                </div><!--/.col-md-3-->
+                <div class="col-md-3 col-sm-6">
+                    <h4 style="margin-left:40px;">Linkler</h4>
+                    <ul style="list-style-type:none;">
+                        <li><a href="/OwnageNotices/ownageNoticesFilterLikeGender">Yuva Arayanlar</a></li>
+                        <li><a href="#">Kedi Türleri</a></li>
+                        <li><a href="#">Köpek Türleri</a></li>
+                        <li><a href="/SiteLogin/Login">Oturum Aç</a></li>
+                        <li><a href="/SiteSignUp/SignUp">Kayıt Ol</a></li>
+                    </ul>
+                </div><!--/.col-md-3-->
+                <div class="col-md-3 col-sm-6">
+                    <h4 style="margin-left:40px;">Veteriner</h4>
+
+                    <ul style="list-style-type:none;">
+                        <li><a href="/Veterinary/VeterinaryLogin">Oturum Aç</a></li>
+                        <li><a href="/Veterinary/VeterinarySignUp">Kayıt Ol</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>Adres</h4>
+                    <address>
+                        <strong>Pet Bakım</strong><br>
+                        MERSİN ERDEMLİ UTİYO<br>
+                        Mersin,Erdemli<br>
+                        <abbr title="Telefon">Tel:</abbr> (111) 111-1111
+                    </address>
+                    <h4>Mesaj Atın</h4>
+                    <form role="form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" autocomplete="off" placeholder="E-posta">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button">Gönder</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2019 <a target="_blank" href="#" title="Mersin Erdemli UTİYO">Mersin Erdemli UTİYO</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="/Site/Index">Anasayfa</a></li>
+                        <li><a href="/Site/Contacts">İletişim</a></li>
+                        <li><a id="gototop" class="gototop" href="#"><img style="width:30px;height:30px;" src="~/Images/up.ico" /></a></li><!--#gototop-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="~/Content/Site/js/jquery.js"></script>
+    <script src="~/Content/Site/js/bootstrap.min.js"></script>
+    <script src="~/Content/Site/js/jquery.prettyPhoto.js"></script>
+    <script src="~/Content/Site/js/main.js"></script>
+
+</body>
+</html>

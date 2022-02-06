@@ -1,0 +1,46 @@
+﻿@model IEnumerable<petscare.Models.SliderImages>
+
+@{
+    ViewBag.Title = "Slider Resim Listesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+           Slider Resimler
+        </th>
+        <th>
+            Uzantılar
+        </th>
+    </tr>
+
+@foreach (var slider in Model) {
+    <tr>
+        <td>
+            @if (slider.SliderImages_ID.ToString() != null)
+            {
+                <a href="#"><img style="width:150px;height:100px;" src="@slider.SliderImages_extension" /></a>
+            }
+
+        </td>
+        <td>
+            @if (slider.SliderImages_extension != null)
+            {
+            <a href="#">@slider.SliderImages_extension</a>
+            }
+
+        </td>
+        <td>
+            @if (slider.SliderImages_ID != 0)
+            {
+            <td>
+                <a class="delete" href='@Url.Action("DeleteSliderImage","Admin",
+                            new{ sliderID=slider.SliderImages_ID})'>Sil</a>
+            </td>
+        }
+
+        </tr>
+}
+
+</table>

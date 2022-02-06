@@ -1,0 +1,45 @@
+﻿@model petscare.Models.vaccine_calendar
+
+@{
+    ViewBag.Title = "UserPetVaccineStatus";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Aşı Durumu</h2>
+
+        @using (Html.BeginForm())
+        {
+
+            <div class="form-horizontal">
+                
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.vaccinecalendar_ID)
+                @Html.HiddenFor(model => model.pet_ID)
+                @Html.HiddenFor(model => model.vets_ID)
+                @Html.HiddenFor(model => model.vaccine_days)
+                @Html.HiddenFor(model => model.vaccine_name)
+                @Html.HiddenFor(model => model.vets_ID)
+                @Html.HiddenFor(model => model.vets_ID)
+                @Html.HiddenFor(model => model.vets_ID)
+
+
+                <select name="vaccinestatus_ID">
+                    @if (ViewBag.VaccineStatus != null)
+                    {
+                        foreach (var item in ViewBag.VaccineStatus)
+                        {
+                            <option value="@item.vaccinestatus_ID">Veteriner: @item.vaccinestatus</option>
+                        }
+                    }
+                </select>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Kaydet" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div></section>

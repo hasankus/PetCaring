@@ -1,0 +1,83 @@
+﻿@model IEnumerable<petscare.Models.pets_appearance>
+
+@{
+    ViewBag.Title = "Pet Özellikleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+             Pet ID:
+        </th>
+        <th>
+            Cins Adı:
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.pets_colors)
+        </th>*@
+        <th>
+            Cins Açıklaması:
+        </th>
+        <th>
+            Boyut:
+        </th>
+        <th>
+            Ülke:
+        </th>
+        <th>
+            Karakter Açıklaması:
+        </th>
+        <th>
+            Bakım Talimatları:
+        </th>
+        <th>
+            Kıl Uzunlukları:
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets.pets_breed.pets_breedname)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.pets_colors)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_breeddescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_bodysize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_characterdescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_careinstruction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_hairfigure)
+        </td>
+
+        <td>
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.pets_appearanceID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.pets_appearanceID }) |*@
+            @if (item.pets_appearanceID != 0)
+            {
+                <a class="delete" href='@Url.Action("petAppearanceDelete", "animals",
+                            new{ petappearanceID=item.pets_appearanceID})'>Sil</a>
+            }
+        </td>
+    </tr>
+}
+
+</table>

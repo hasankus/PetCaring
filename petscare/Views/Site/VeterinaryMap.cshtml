@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false">
+</script>
+
+<script type="text/javascript">
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (p) {
+            var LatLng = new google.maps.LatLng(p.coords.latitude, p.coords.longitude);
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'), {
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                center: LatLng,
+                zoom: 15
+            });
+
+            var marker = new google.maps.Marker({
+                position: LatLng,
+                map: map,
+                title: "<div style = 'height:60px;width:200px'><b>Konumunuz:</b><br />Enlem: " + p.coords.latitude + "<br />Boylam: " + p.coords.longitude
+            });
+            var marker2 = new google.maps.Marker({
+                position: { lat: 36.608537, lng: 34.307629 },
+                map: map,
+                icon: '/Images/veticon13.png',
+                title: "<div style = 'height:60px;width:200px'><b>Erdemli Veteriner</b><br /> Merkez Mahallesi</b><br /> Yunusbey Sk. 104/B 33730</b><br /> Erdemli / Mersin Türkiye "
+            });
+            var marker3 = new google.maps.Marker({
+                position: { lat: 36.607436, lng: 34.308791 },
+                map: map,
+                icon: '/Images/veticon13.png',
+                title: "<div style = 'height:60px;width:200px'><b>Kare Veteriner </b><br /> Merkez Mahallesi</b><br /> Türbe Cad.No: 19/B  Merkez Mah. 33730 </b><br /> Erdemli / Mersin Türkiye"
+            });
+           
+            
+            google.maps.event.addListener(marker, "click", function (e) {
+                var infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(marker.title);
+                infoWindow.open(map, marker);
+            });
+            google.maps.event.addListener(marker2, "click", function (e) {
+                var infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(marker2.title);
+                infoWindow.open(map, marker2);
+            });
+            google.maps.event.addListener(marker3, "click", function (e) {
+                var infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(marker3.title);
+                infoWindow.open(map, marker3);
+            });
+        });
+    }
+    else {
+        alert('Tarayıcınız Geolocation özelliklerini desteklemiyor');
+    }
+
+
+</script>
+
+<div>
+    <h3 style="text-align:center;color:white;">Size En Yakın Veterinerler</h3>
+    <hr />
+    <div id="map-canvas" style="width:1100px;height:400px;margin-left:50px;">
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<petscare.Models.appointments>
+
+@{
+    ViewBag.Title = "UserPetsAppointments";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Randuvularım</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Randevu Tarih
+                </th>
+                <th>
+                    Dost Adı
+                </th>
+               
+                <th>
+                    Veteriner
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pet_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.vets.vets_firstname) @Html.DisplayFor(modelItem => item.vets.vets_lastname)
+                    </td>
+                    <td>
+                        @if (item.pet_ID != 0)
+                        {
+                            @Html.ActionLink("Randevu İptal", "UserPetsAppoinmentsDelete", "UserPets", new {petID = item.pet_ID, }, new { style = "color:orange;" })
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div></section>

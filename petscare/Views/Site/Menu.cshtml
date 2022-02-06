@@ -1,0 +1,48 @@
+﻿@model IEnumerable<petscare.Models.pets>
+
+<ul style="padding-top:5px;" class="nav navbar-nav navbar-right">
+    <li><a href="~/Site/Index" style="color:white;">Anasayfa</a></li>
+    <li><a href="/OwnageNotices/ownageNoticesFilterLikeGender" style="color:white;">Yuva Arayanlar</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:white;">Bakım Rehberi</a>
+        <ul class="dropdown-menu">
+            @{
+                Html.RenderAction("Categories", "Site");
+            }
+        </ul>
+    </li>
+
+    <li><a href="/Site/Contacts" style="color:white;">İletişim</a></li>
+    @if (Session["Name"] != null)
+    {
+        <li class="dropdown">
+            <a style="color:lawngreen;font-size:15px;" href="#" class="dropdown-toggle" data-toggle="dropdown">Merhaba @Session["Name"]</a>
+            <ul class="dropdown-menu">
+
+                <li>@Html.ActionLink("Hesabım", "userAccount", "User", new { userId = Session["userID"] }, new { @style = "color:white;text-decoration:none;" })</li>
+                <li>@Html.ActionLink("Dostlarım", "userPetsList", "UserPets", new { userId = Session["userID"] }, new { @style = "color:white;text-decoration:none;" })</li>
+                <li>@Html.ActionLink("Çıkış Yap", "LogOut", "SiteLogin", new { model = Model }, new { @style = "color:white;text-decoration:none;" })</li>
+
+            </ul>
+        </li>
+    }
+    @if (Session["vetName"] != null)
+    {
+        <li class="dropdown">
+            <a style="color:lawngreen;" href="#" class="dropdown-toggle" data-toggle="dropdown">Veteriner @Session["vetName"]</a>
+            <ul class="dropdown-menu">
+                <li>@Html.ActionLink("Hesabım", "VeterinaryAccount", "Veterinary", new { vetId = Session["vetID"] }, new { @style = "text-decoration:none;color:white;" })</li>
+                <li>@Html.ActionLink("İşlemlerim", "VeterinaryActions", "Veterinary", new { vetId = Session["vetID"] }, new { @style = "text-decoration:none;color:white;" })</li>
+
+                <li>@Html.ActionLink("Çıkış Yap", "VeterinaryLogOut", "Veterinary", new { model = Model }, new { @style = "text-decoration:none;color:white;" })</li>
+            </ul>
+        </li>
+    }
+    @if (Session["Name"] == null && Session["vetName"] == null)
+    {
+            <li><a style="color:lawngreen;" href="/SiteLogin/Login">Oturum Aç</a></li>
+    }
+
+</ul>
+
+

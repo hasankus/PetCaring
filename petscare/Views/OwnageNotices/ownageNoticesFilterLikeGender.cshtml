@@ -1,0 +1,37 @@
+﻿@model IEnumerable<petscare.Models.pets_species>
+
+@{
+    ViewBag.Title = "Yuva Arayanlar";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+<div style="background-color:white;border-radius:20px;padding-left:380px;padding-bottom:5px;padding-top:25px;">
+    <h3 style="padding-left:230px;">Pet Türü Seçin</h3>
+    @foreach (var species in Model)
+    {
+
+        if (species.pets_speciesID == 6)
+        {
+            <a style="float:left;" href="@Url.Action("ownageNoticesList", "OwnageNotices", new { petspeciesId = species.pets_speciesID })" title="Kedi" class="links">
+                <img alt="List View" src="@Url.Content("~/Images/categorikedi.jpg")">
+
+            </a>
+        }
+
+
+        else if (species.pets_speciesID == 7)
+        {
+            <a href="@Url.Action("ownageNoticesList", "OwnageNotices", new { petspeciesId = species.pets_speciesID })" title="Köpek" class="links">
+                <img alt="List View" src="@Url.Content("~/Images/categoriköpek.jpg")">
+
+            </a>
+        }
+
+
+        @*<li>@Html.ActionLink(species.pets_speciesname , "ownageNoticesList", "OwnageNotices", new { petspeciesId = species.pets_speciesID }, new { style = "color:black;text-decoration:none;" })</li>*@
+
+    }
+</div>
+    @*<li><a style="color:black;text-decoration:none;" href="/Site/PetsList?petspeciesId=6">Kedi Cinsleri</a></li>
+        <li><a style="color:black;text-decoration:none;" href="/Site/PetsList?petspeciesId=7">Köpek Cinsleri</a></li>*@

@@ -1,0 +1,49 @@
+﻿@model IEnumerable<petscare.Models.user_pets>
+
+@{
+    ViewBag.Title = "UserPetsInformations";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Pet Bilgileri</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Pet Adı
+                </th>
+                <th>
+                    Pet Türü
+                </th>
+                <th>
+                    Pet Cinsi
+                </th>
+                <th>
+                    Pet Sahibi
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pet_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pet_species)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.pet_breed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.user.user_firstname) @Html.DisplayFor(modelItem => item.user.user_lastname)
+                    </td>
+                </tr>
+            }
+
+        </table>
+        </div></section>

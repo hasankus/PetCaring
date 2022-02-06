@@ -1,0 +1,46 @@
+﻿@model IEnumerable<petscare.Models.Contact>
+
+@{
+    ViewBag.Title = "Mesajlar";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Ad
+        </th>
+        <th>
+            Soyad
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Mesaj
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_userName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_userSurname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contact_message)
+        </td>
+        <td>
+          
+        </td>
+    </tr>
+}
+
+</table>

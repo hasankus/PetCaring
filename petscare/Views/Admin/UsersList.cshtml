@@ -1,0 +1,60 @@
+﻿@model IEnumerable<petscare.Models.user>
+
+@{
+    ViewBag.Title = "Üye Listesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+           Ad
+        </th>
+        <th>
+            Soyad
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Telefon
+        </th>
+        <th>
+            Yaş
+        </th>
+        <th>
+           Kullanıcı Ad
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_firstname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.user_username)
+        </td>
+        
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.user_ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.user_ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.user_ID })
+        </td>*@
+    </tr>
+}
+
+</table>

@@ -1,0 +1,104 @@
+﻿@model List<petscare.Models.user_pets>
+
+@{
+    ViewBag.Title = "Dostlarım";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+<section id="services">
+    <div class="container">
+       
+        <p style="text-align:right;">
+            @Html.ActionLink("Yeni Dost Ekle", "userPetsAdd", "UserPets", new { userID = Session["userID"] }, new { @class = "btn btn-xs btn-primary ", style = "color:white;text-decoration:none;" })
+                </p>
+
+        <h2 style="text-align:center;">Dostlarım</h2>
+
+        <table class="table" style="">
+
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    @if (item.user_petspicture.Count() != 0)
+                    {
+                        <td><img alt="" style="height:100px;width:150px;margin:5px;" src="@item.user_petspicture.FirstOrDefault().pet_pictureextension" /></td>
+
+                    }
+                    else if (item.user_petspicture.Count() == 0)
+                    {
+                        <td><img style="height:100px;width:150px;margin:5px;" src="~/Images/petsicon.png" /></td>
+                    }
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Ad<br />
+                        @Html.DisplayFor(modelItem => item.pet_name)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Tür<br />
+                        @Html.DisplayFor(modelItem => item.pet_species)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Cins<br />
+                        @Html.DisplayFor(modelItem => item.pet_breed)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Doğum Tarihi<br />
+                        @Html.DisplayFor(modelItem => item.user_petsfeatures.FirstOrDefault().pet_birthday)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Yaş<br />
+                        @Html.DisplayFor(modelItem => item.user_petsfeatures.FirstOrDefault().pet_age)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Doğum Yeri<br />
+                        @Html.DisplayFor(modelItem => item.user_petsfeatures.FirstOrDefault().pet_birthplace)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Boy<br /> @Html.DisplayFor(modelItem => item.user_petsfeatures.FirstOrDefault().pet_height)<span> cm</span>
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Kilo<br />
+                        @Html.DisplayFor(modelItem => item.user_petsfeatures.FirstOrDefault().pet_kilo)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Veteriner<br />
+                        @Html.DisplayFor(modelItem => item.vets.vets_firstname) @Html.DisplayFor(modelItem => item.vets.vets_lastname)
+                    </td>
+                    @if (item.user_petsfeatures.Count() == 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">
+                            @Html.ActionLink("Özellik Ekle", "userPetsFeaturesAdd", "UserPets", new { petID = item.pet_ID,userId=item.user_ID }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })
+                        </td>
+
+                    }
+                    else if (item.user_petsfeatures.Count() != 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Özellik Değiştir", "userPetsFeaturesEdit", "UserPets", new { petID = item.pet_ID, userId = item.user_ID }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+                    }
+
+                    @if (item.user_petspicture.Count() != 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Fotoğraf Değiştir", "userPetsPictureUpdate", "UserPets", new { petID = item.pet_ID, }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+                    }
+                    else if (item.user_petspicture.Count() == 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Yeni Fotoğraf Ekle", "userPetsPictureAdd", "UserPets", new { petID = item.pet_ID, }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+                    }
+                    @if (item.appointments.Count() != 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Randevu Görüntüle", "UserPetsAppointments", "UserPets", new { petID = item.pet_ID, }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+                    }
+                    else if (item.appointments.Count() == 0)
+                    {
+                        <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Randevu Al", "MakeAppointments", "Appointments", new { petID = item.pet_ID, vetsID=item.vets_ID }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+
+                    }
+                    <td style="padding-right:20px;padding-top:30px;">@Html.ActionLink("Aşı Takvimi", "UserPetsVaccineDays", "UserPets", new { petID = item.pet_ID, }, new { @class = "button", style = "color:cornflowerblue;text-decoration:none;" })</td>
+                </tr>
+            }
+
+
+
+        </table>
+    </div>
+</section>
+

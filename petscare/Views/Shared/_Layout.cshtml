@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <link href="~/Content/Site/css/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/Site/css/prettyPhoto.css" rel="stylesheet">
+    <link href="~/Content/Site/css/animate.css" rel="stylesheet">
+    <link href="~/Content/Site/css/main.css" rel="stylesheet">
+    <link href="~/Content/Site/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <header style="background-color:cornflowerblue;" class="navbar navbar-inverse navbar-fixed-top wet-asphalt" role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="~/Site/Index"><img style="width:50px;height:50px;" src="~/Content/Site/images/pets-512.png" />@*<span style="font-size:25px;font-family:ScrambledTofu;">Dost Bakım</span>*@</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                @{
+                    Html.RenderAction("Menu", "Site");
+                }
+            </div>
+        </div>
+    </header>
+    @RenderBody()
+    <section style="background-color:cornflowerblue;" id="bottom" class="wet-asphalt">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <h4>Pet Bakım</h4>
+                    <p>Satın Alma Sahiplen!</p>
+                    <p></p>
+                </div><!--/.col-md-3-->
+                <div class="col-md-3 col-sm-6">
+                    <h4 style="margin-left:40px;">Linkler</h4>
+                    <ul style="list-style-type:none;">
+                        <li><a href="/OwnageNotices/ownageNoticesFilterLikeGender">Yuva Arayanlar</a></li>
+                        <li><a href="#">Kedi Türleri</a></li>
+                        <li><a href="#">Köpek Türleri</a></li>
+                        <li><a href="/SiteLogin/Login">Oturum Aç</a></li>
+                        <li><a href="/SiteSignUp/SignUp">Kayıt Ol</a></li>
+                    </ul>
+                </div><!--/.col-md-3-->
+                <div class="col-md-3 col-sm-6">
+                    <h4 style="margin-left:40px;">Veteriner</h4>
+
+                    <ul style="list-style-type:none;">
+                        <li><a href="/Veterinary/VeterinaryLogin">Oturum Aç</a></li>
+                        <li><a href="/Veterinary/VeterinarySignUp">Kayıt Ol</a></li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <h4>Adres</h4>
+                    <address>
+                        <strong>Pet Bakım</strong><br>
+                        MERSİN ERDEMLİ UTİYO<br>
+                        Mersin,Erdemli<br>
+                        <abbr title="Telefon">Tel:</abbr> (111) 111-1111
+                    </address>
+                    <h4>Mesaj Atın</h4>
+                    <form role="form">
+                        <div class="input-group">
+                            <input type="text" class="form-control" autocomplete="off" placeholder="E-posta">
+                            <span class="input-group-btn">
+                                <button class="btn btn-danger" type="button">Gönder</button>
+                            </span>
+                        </div>
+                    </form>
+                </div> <!--/.col-md-3-->
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer" class="midnight-blue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    &copy; 2019 <a target="_blank" href="#" title="Mersin Erdemli UTİYO">Mersin Erdemli UTİYO</a>. All Rights Reserved.
+                </div>
+                <div class="col-sm-6">
+                    <ul class="pull-right">
+                        <li><a href="/Site/Index">Anasayfa</a></li>
+                        <li><a href="/Site/Contacts">İletişim</a></li>
+                        <li><a id="gototop" class="gototop" href="#"><img style="width:30px;height:30px;" src="~/Images/up.ico" /></a></li><!--#gototop-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+
+
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>

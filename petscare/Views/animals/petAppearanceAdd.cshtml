@@ -1,0 +1,89 @@
+﻿@model petscare.Models.pets_appearance
+
+@{
+    ViewBag.Title = "Pet Özellik Ekle";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        Pet Cinsi:
+        <div class="col-md-10">
+            <select name="pets_ID">
+                @foreach (var pet in ViewBag.pets)
+                {
+                    <option value="@pet.pets_ID">@pet.pets_breed.pets_breedname</option>
+                }
+            </select>
+        </div>
+    </div>
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.pets_colors, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.pets_colors, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.pets_colors, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+    <div class="form-group">
+        Cins Açıklamaları:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_breeddescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_breeddescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Boyut:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_bodysize, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_bodysize, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Ülke:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_origin, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_origin, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Karakter Açıklamaları:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_characterdescription, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_characterdescription, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Bakım Talimatları:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_careinstruction, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_careinstruction, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        Tüy Uzunlukları:
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.pets_hairfigure, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.pets_hairfigure, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Ekle" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

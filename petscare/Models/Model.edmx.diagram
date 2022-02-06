@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2403235988014aebb79822dd94d3804a" Name="Diagram1">
+        <EntityTypeShape EntityType="petscareModel.admin" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.appointments" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.ownage_notice" Width="1.5" PointX="17.5" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.ownagenotices_pictures" Width="1.5" PointX="19.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pet_gender" Width="1.5" PointX="15.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pets" Width="1.5" PointX="17.5" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pets_appearance" Width="1.5" PointX="19.75" PointY="19.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pets_breed" Width="1.5" PointX="13" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pets_breedpictures" Width="1.5" PointX="10.75" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.pets_species" Width="1.5" PointX="15.25" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.provinces" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.SliderImages" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user" Width="1.5" PointX="3.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user_adress" Width="1.5" PointX="6" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user_pets" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user_petsfeatures" Width="1.5" PointX="8.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user_petspicture" Width="1.5" PointX="8.25" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.user_pictures" Width="1.5" PointX="6" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.vaccine_calendar" Width="1.5" PointX="11.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.vets" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.vets_adress" Width="1.5" PointX="3" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="petscareModel.vets_pictures" Width="1.5" PointX="3" PointY="20.625" IsExpanded="true" />
+        <AssociationConnector Association="petscareModel.FK_appointments_user_pets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_appointments_vets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_ownage_notice_pet_gender" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_ownage_notice_pets_breed" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_ownage_notice_pets_species" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_ownage_notice_user" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_ownagenotices_pictures_ownage_notice" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_appearance_pets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_pets_breed" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_pets_species" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_features_pets_breed" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_breed_pets_breedpictures" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_pets_species_pets_breed" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_adress_user" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_pets_user" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_pictures_user" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_pets_vets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_petsfeatures_user_pets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_user_petspicture_user_pets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_vaccine_calendar_user_pets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_vaccine_calendar_vets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_vets_adress_vets" ManuallyRouted="false" />
+        <AssociationConnector Association="petscareModel.FK_vets_pictures_vets" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="petscareModel.vaccine_status" Width="1.5" PointX="7.375" PointY="0.875" />
+        <AssociationConnector Association="petscareModel.FK_vaccine_calendar_vaccine_status" />
+        <EntityTypeShape EntityType="petscareModel.Contact" Width="1.5" PointX="8.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

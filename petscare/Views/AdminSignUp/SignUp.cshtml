@@ -1,0 +1,94 @@
+﻿@model petscare.Models.admin
+
+@{
+    ViewBag.Title = "Kayıt Ol";
+    Layout = "~/Views/Shared/AdminSignUpLayout.cshtml";
+}
+
+
+@using (Html.BeginForm()) 
+{
+   
+    
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_firstname, new { htmlAttributes = new { @class = "form-control", placeholder = "Ad", required = "required" } })
+            @Html.ValidationMessageFor(model => model.admin_firstname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_lastname, new { htmlAttributes = new { @class = "form-control", placeholder = "Soyad", required = "required" } })
+            @Html.ValidationMessageFor(model => model.admin_lastname, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_firstpassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre", required = "required", type = "password" } })
+            @Html.ValidationMessageFor(model => model.admin_firstpassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_againpassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Şifre Tekrar", required = "required", type = "password" } })
+            @Html.ValidationMessageFor(model => model.admin_againpassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email", required = "required" } })
+            @Html.ValidationMessageFor(model => model.admin_email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_telephone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telefon", required = "required" } })
+            @Html.ValidationMessageFor(model => model.admin_telephone, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.admin_age, new { htmlAttributes = new { @class = "form-control", placeholder = "Yaş", required = "required" } })
+            @Html.ValidationMessageFor(model => model.admin_age, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @*<div class="form-group">
+            <div class="col-md-10">
+                <div>
+                    <label>Cinsiyet:</label>
+                    <select name="sehir" title="Cinsiyet">
+                        <option>Kadın</option>
+                        <option>Erkek</option>
+                    </select>
+                    @Html.ValidationMessageFor(model => model.admin_gender, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>*@
+    <a class="text-danger" style="margin-left:30px;">@Session["errorpassword"]</a>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input class="btn btn-primary btn-block" type="submit" value="Kayıt Ol" />
+        </div>
+    </div>
+</div>
+}
+
+@*<div>
+    @Html.ActionLink("Eğer Üyemiz iseniz buradan devam edin.", "/AdminLogin/Index")
+</div>*@

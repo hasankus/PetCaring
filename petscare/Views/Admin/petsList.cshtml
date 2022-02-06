@@ -1,0 +1,72 @@
+﻿@model IEnumerable<petscare.Models.pets>
+
+@{
+    ViewBag.Title = "Pet Listesi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Pet ID:
+        </th>
+        <th>
+            Resim:
+        </th>
+        <th>
+            Cins Adı:
+        </th>
+        <th>
+            Tür Adı:
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.pets_ID)
+            </td>
+            <td>
+                @if (item.pets_breed.pets_breedID.ToString() != null)
+                {
+                    <img style="width:100px;height:100px;" alt="" src="@item.pets_breed.pets_breedpictureextension" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pets_breed.pets_breedname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pets_species.pets_speciesname)
+            </td>
+
+
+            <td>
+                @if (item.pets_appearance.FirstOrDefault(x => x.pets_ID == item.pets_ID) != null)
+                {
+                <td>
+                    @Html.ActionLink("Özellik", "petAppearanceDetail", "Admin", new { petsID = item.pets_ID }, new { style = "background-color:white;border-radius:2px;color:blue;padding:2px;" })
+                </td>
+
+            }
+            else
+            {
+                <td><a href="/Admin/petAppearanceAdd" style="font-size:12px;text-decoration:none;color:blue;">Özellik Ekle</a></td>
+            }
+
+
+
+                @if (item.pets_ID != 0)
+                {
+                    <td>
+                        <a class="delete" href='@Url.Action("petsDelete", "Admin",
+                            new{ petsID=item.pets_ID})'>Sil</a>
+                    </td>
+                }
+
+            </tr>
+        }
+
+</table>

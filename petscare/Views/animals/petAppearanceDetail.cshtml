@@ -1,0 +1,73 @@
+﻿@model IEnumerable<petscare.Models.pets_appearance>
+
+@{
+    ViewBag.Title = "Pet Özellikleri";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            Pet ID:
+        </th>
+        <th>
+            Cins Açıklama:
+        </th>
+        <th>
+            Boyut:
+        </th>
+        <th>
+            Ülke:
+        </th>
+        <th>
+            Karakter:
+        </th>
+        <th>
+            Bakım Talimatları:
+        </th>
+        <th>
+            Tüy Uzunluk:
+        </th>
+        
+        <th>
+            Cins:
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets.pets_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_breeddescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_bodysize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_origin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_characterdescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_careinstruction)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.pets_hairfigure)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.pets.pets_breed.pets_breedname)
+        </td>
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.pets_appearanceID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.pets_appearanceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.pets_appearanceID })
+        </td>*@
+    </tr>
+}
+
+</table>

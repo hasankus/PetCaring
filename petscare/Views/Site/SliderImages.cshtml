@@ -1,0 +1,28 @@
+﻿@model List<petscare.Models.SliderImages>
+@{
+    ViewBag.Title = "SliderImages";
+}
+
+<div style="height:524px;" class="carousel slide wet-asphalt">
+    <div class="carousel-inner">
+        @foreach (var image in Model)
+        {
+
+            if (image.SliderImages_ID == Model[0].SliderImages_ID)
+            {
+                <div class="item active">
+                    <img src="@image.SliderImages_extension">
+                </div>
+            }
+            else
+            {
+                <div class="item">
+                    <img src="@image.SliderImages_extension">
+                </div>
+            }
+        }
+    </div>
+</div>
+
+
+

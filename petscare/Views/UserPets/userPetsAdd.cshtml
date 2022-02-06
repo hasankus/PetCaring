@@ -1,0 +1,68 @@
+﻿@model petscare.Models.user_pets
+
+@{
+    ViewBag.Title = "Dost Ekle";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;"> Yeni Dost Ekle</h2>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                <div class="form-group">
+                  
+                    <div class="col-md-10">
+                        Dost Adı
+                        @Html.EditorFor(model => model.pet_name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                  
+                    <div class="col-md-10">
+                        Dost Türü
+                        @Html.EditorFor(model => model.pet_species, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_species, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                   
+                    <div class="col-md-10">
+                        Dost Cinsi
+                        @Html.EditorFor(model => model.pet_breed, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.pet_breed, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <select name="vetsID">
+
+                    @foreach (var item in ViewBag.Vets)
+                    {
+                        <option value="@item.vets_ID">Veteriner: @item.vets_firstname @item.vets_lastname</option>
+                    }
+                </select>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Ekle" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+</div></section>
+

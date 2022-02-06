@@ -1,0 +1,95 @@
+﻿@model IEnumerable<petscare.Models.vets>
+
+@{
+    ViewBag.Title = "VeterinaryAccount";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6">
+                    <h1>@Html.DisplayFor(modelItem => item.vets_firstname) @Html.DisplayFor(modelItem => item.vets_lastname)</h1>
+                    <p>Bilgilerinizi Düzenleyebilirsiniz.</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="~/Site/Index">Anasayfa</a></li>
+                        <li class="active">Hesabım</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Hesabım</h2>
+
+        <table class="table" style="">
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    @if (item.vets_pictures.Count() != 0)
+                    {
+
+                        <td style="height:50px;padding:10px;" rowspan="3"><img alt="" style="height:100px;width:150px;margin:5px;" src="@item.vets_pictures.FirstOrDefault().vets_picturesextension" /></td>
+
+                    }
+                    else if (item.vets_pictures.Count() == 0)
+                    {
+                        <td style="height:50px;padding:10px;" rowspan="3"><img style="height:100px;width:150px;margin:5px;" src="~/Images/user.png" /></td>
+                    }
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Ad-Soyad<br />
+                        @Html.DisplayFor(modelItem => item.vets_firstname) @Html.DisplayFor(modelItem => item.vets_lastname)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Kullanıcı Adı<br />
+                        @Html.DisplayFor(modelItem => item.vets_username)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Email<br />
+                        @Html.DisplayFor(modelItem => item.vets_email)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Telefon<br />
+                        @Html.DisplayFor(modelItem => item.vets_telephone)
+                    </td>
+                    <td style="padding-right:20px;padding-top:30px;">
+                        Yaş<br />
+                        @Html.DisplayFor(modelItem => item.vets_age)<span></span>
+                    </td>
+                    @if (item.vets_pictures.Count() != 0)
+                    {
+                        <td style="text-align:center;padding:10px;padding-top:30px;">@Html.ActionLink("Fotoğraf Değiştir", "VetPictureUpdate", "Veterinary", new { vetId = item.vets_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })</td>
+                    }
+                    else if (item.vets_pictures.Count() == 0)
+                    {
+                        <td style="text-align:center;padding:10px;padding-top:30px;">@Html.ActionLink("Yeni Fotoğraf Ekle", "VetPictureAdd", "Veterinary", new { vetId = item.vets_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })</td>
+                    }
+                    <td style="text-align:center;padding:10px;padding-top:30px;">
+                        @Html.ActionLink("Hesabını Düzenle", "VetAccountEdit", new { vetId= item.vets_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                    </td>
+                    @if (item.vets_adress.Count() == 0)
+                    {
+                        <td style="text-align:center;padding:10px;padding-top:30px;">
+                            @Html.ActionLink("Adres Ekle", "VetAddressAdd", new { vetId = item.vets_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                        </td>
+                    }
+                    else if (item.vets_adress.Count() == 1)
+                    {
+                        <td style="text-align:center;padding:10px;padding-top:30px;">
+                            @Html.ActionLink("Adres Düzenle", "VetAddressEdit", new { vetId = item.vets_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                        </td>
+                    }
+                </tr>
+
+            }
+
+        </table>
+    </div>
+</section>

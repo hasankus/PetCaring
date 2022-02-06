@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Anasayfa";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+
+<section id="main-slider" class="no-margin">
+            @{
+                Html.RenderAction("SliderImages", "Site");
+            }
+        <a class="prev hidden-xs" href="#main-slider" data-slide="prev">
+            <i><img style="width:25px;height:25px;" src="~/Content/Site/images/icons/left.png" /></i>
+        </a>
+        <a class="next hidden-xs" href="#main-slider" data-slide="next">
+            <i><img style="width:25px;height:25px;" src="~/Content/Site/images/icons/right-arrow.png" /></i>
+        </a>
+</section>
+<section id="services" class="emerald">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="icon-twitter icon-md" style="width:70px;height:70px;padding:10px;" src="~/Images/kedi2.png" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Dostunuza Nasıl Bakabileceğinizi Öğrenebilirsiniz.</h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="icon-twitter icon-md" style="width:70px;height:70px;padding:10px;" src="~/Images/kopek.png" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Sahiplenme Listelerine Göz Atarak Yeni Bir Dost Edinebilirsiniz.</h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div><!--/.col-md-4-->
+            <div class="col-md-4 col-sm-6">
+                <div class="media">
+                    <div class="pull-left">
+                        <img class="icon-twitter icon-md" style="width:70px;height:70px;padding:10px;" src="~/Images/kedi2.png" />
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Size En Yakın Olan Anlaşmalı Veterinerlerimizi Bulabilirsiniz.</h4>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="recent-works">
+    @{
+        Html.RenderAction("OwnageNoticesList", "Site");
+    }
+</section>
+<section style="background-color:crimson;">
+    @{
+        Html.RenderAction("VeterinaryMap", "Site");
+    }
+</section>

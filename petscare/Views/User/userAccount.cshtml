@@ -1,0 +1,109 @@
+﻿@model List<petscare.Models.user>
+@{
+    ViewBag.Title = "Kullanıcı Hesap";
+    Layout = "~/Views/Shared/SiteLayout.cshtml";
+}
+<section id="title" class="emerald">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="col-sm-6">
+                    <h1>@Html.DisplayFor(modelItem => item.user_firstname) @Html.DisplayFor(modelItem => item.user_lastname)</h1>
+                    <p>Bilgilerinizi Düzenleyip Yeni İlanlar Verebilirsiniz.</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="~/Site/Index">Anasayfa</a></li>
+                        <li class="active">Hesabım</li>
+                    </ul>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<section id="services">
+    <div class="container">
+        <h2 style="text-align:center;">Hesabım</h2>
+
+        <table class="table" style="">
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                @if (item.user_pictures.Count() != 0)
+                {
+
+                    <td style="height:50px;padding:10px;" rowspan="3"><img alt="" style="height:100px;width:150px;margin:5px;" src="@item.user_pictures.FirstOrDefault().user_pictureextension" /></td>
+
+                }
+                else if (item.user_pictures.Count() == 0)
+                {
+                    <td style="height:50px;padding:10px;" rowspan="3"><img style="height:100px;width:150px;margin:5px;" src="~/Images/user.png" /></td>
+                }
+                <td style="padding-right:20px;padding-top:30px;">
+                Ad-Soyad<br/>
+                @Html.DisplayFor(modelItem => item.user_firstname) @Html.DisplayFor(modelItem => item.user_lastname)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Kullanıcı Adı<br />
+                    @Html.DisplayFor(modelItem => item.user_username)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Email<br />
+                    @Html.DisplayFor(modelItem => item.user_email)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Telefon<br />
+                    @Html.DisplayFor(modelItem => item.user_telephone)
+                </td>
+                <td style="padding-right:20px;padding-top:30px;">
+                    Yaş<br />
+                    @Html.DisplayFor(modelItem => item.user_age)<span></span>
+                </td>
+                @if (item.user_pictures.Count() != 0)
+                {
+                    <td style="text-align:center;padding:10px;padding-top:30px;">@Html.ActionLink("Fotoğraf Değiştir", "userPictureUpdate", "User", new { userId = item.user_ID, }, new { @class = "button", style = "color:orange;text-decoration:none;" })</td>
+                }
+                else if (item.user_pictures.Count() == 0)
+                {
+                    <td style="text-align:center;padding:10px;padding-top:30px;">@Html.ActionLink("Yeni Fotoğraf Ekle", "usersPictureAdd", "User", new { userId = item.user_ID, }, new { @class = "button", style = "color:orange;text-decoration:none;" })</td>
+                }
+                <td style="text-align:center;padding:10px;padding-top:30px;">
+                    @Html.ActionLink("Hesabını Düzenle", "userAccountEdit", new { id = item.user_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                </td>
+                @if (item.user_adress.Count() == 0)
+                {
+                    <td style="text-align:center;padding:10px;padding-top:30px;">
+                        @Html.ActionLink("Adres Ekle", "userAddressAdd", new { userID = item.user_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                    </td>
+                }
+                else if (item.user_adress.Count() == 1)
+                {
+                    <td style="text-align:center;padding:10px;padding-top:30px;">
+                        @Html.ActionLink("Adres Düzenle", "userAddressEdit", new { id = item.user_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                    </td>
+                }
+
+
+                <td style="text-align:center;padding:10px;padding-top:30px;">
+                    @Html.ActionLink("İlanlarım", "userOwnageNoticeList", "OwnageNotices", new { user_ID = item.user_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+
+                </td>
+
+
+                <td style="text-align:center;padding:10px;padding-top:30px;">
+                    @Html.ActionLink("Yeni İlan Ver", "ownageNoticesAdd", "OwnageNotices", new { user_ID = item.user_ID }, new { @class = "button", style = "color:orange;text-decoration:none;" })
+                </td>
+
+            </tr>
+
+            }
+
+        </table>
+    </div>
+</section>
+
+
+
+
